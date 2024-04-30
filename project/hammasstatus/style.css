@@ -109,3 +109,20 @@ html[ioswebview] .c3htmlwrap > * {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
 }
+ 
+
+@keyframes delayedFadeIn {
+  0% {
+    opacity: 0; /* Start with transparency */
+  }
+  50% {
+    opacity: 0; /* Stay transparent for half the duration */
+  }
+  100% {
+    opacity: 1; /* Fully opaque at the end */
+  }
+}
+
+canvas {
+  animation: delayedFadeIn 6s ease-in-out; /* Apply the animation with a 2-second duration */
+}
