@@ -9,28 +9,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center; /* Center items vertically */
             background: url('/pics/pepehack.gif') no-repeat left center fixed; /* Set background image */
             background-size: contain; /* Adjust background image size */
         }
-        header {
-            background: none; /* Remove background */
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         .container {
             max-width: 800px;
-            margin: auto;
             padding: 2rem;
             color: #fff; /* Set text color to white */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align items to the left */
-            margin-left: calc(100% + 50px); /* Move the container to the right by adding 50px to the page width */
+            margin-left: 20px; /* Add margin to create space between picture and container */
         }
         .project {
             border: 1px solid #ccc;
@@ -39,7 +27,7 @@
             margin-bottom: 1rem;
             background: rgba(0, 0, 0, 0.5); /* Add semi-transparent background */
             width: 50%; /* Set width of project boxes */
-            margin-left: auto; /* Move the project containers to the right */
+            margin-left: 20px; /* Add margin to create space between project boxes */
         }
         .project h2, .project p {
             color: #fff; /* Set text color to white */
@@ -48,6 +36,7 @@
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            margin-right: 20px; /* Add margin to create space between "Home" link and header */
         }
     </style>
 </head>
