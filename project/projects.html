@@ -11,29 +11,21 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(to right, #d9d9d9, #f2f2f2); /* Gradient from left (#d9d9d9) to right (#f2f2f2) */
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Align items to start and end of container */
         }
         header {
             background: #333;
             color: #fff;
             padding: 1rem;
             text-align: center;
+            width: 100%; /* Take full width */
         }
         .container {
             max-width: 800px;
             margin: auto;
             padding: 2rem;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            width: 70%; /* Set width to 70% of container */
         }
         .project {
             border: 1px solid #ccc;
@@ -41,11 +33,9 @@
             padding: 1rem;
             margin-bottom: 1rem;
         }
-        .project img {
-            display: block;
-            margin: 0 auto;
-            width: 100%; /* Set width to 100% */
-            height: auto; /* Maintain aspect ratio */
+        .tenor-gif-embed {
+            width: 30%; /* Set width to 30% of container */
+            padding: 20px; /* Add some padding */
         }
     </style>
 </head>
@@ -65,7 +55,10 @@
             <p>GitHub: <a href="https://github.com/yourusername/project2">Project 2 Repository</a></p>
         </div>
         <!-- Add more projects as needed -->
-        <img src="/pics/5120-x-1440-ultrawide-odyssey-kali-wallpapers-v0-w60tkcw4q0pa1.webp" alt="Kali" />
     </div>
+    <div class="tenor-gif-embed" data-postid="21294949" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+        <a href="https://tenor.com/view/pepe-hack-hack-pepo-pepe-gif-21294949">Pepe Hack Hack Sticker</a>from <a href="https://tenor.com/search/pepe+hack-stickers">Pepe Hack Stickers</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </body>
 </html>
