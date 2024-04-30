@@ -20,6 +20,9 @@
             padding: 1rem;
             text-align: center;
             width: 100%; /* Take full width */
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Align items to start and end of container */
+            align-items: center; /* Align items vertically */
         }
         .container {
             max-width: 800px;
@@ -37,10 +40,16 @@
             width: 30%; /* Set width to 30% of container */
             padding: 20px; /* Add some padding */
         }
+        .homepage-link {
+            color: #fff; /* White color for link */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold font weight */
+        }
     </style>
 </head>
 <body>
     <header>
+        <a href="/" class="homepage-link">Home</a>
         <h1>Projekteja</h1>
     </header>
     <div class="container">
@@ -57,7 +66,7 @@
         <!-- Add more projects as needed -->
     </div>
     <div class="tenor-gif-embed" data-postid="21294949" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-        <a href="https://tenor.com/view/pepe-hack-hack-pepo-pepe-gif-21294949">Pepe Hack Hack Sticker</a>from <a href="https://tenor.com/search/pepe+hack-stickers">Pepe Hack Stickers</a>
+        <a href="https://tenor.com/view/pepe-hack-hack-pepo-pepe-gif-21294949">Pepe Hack Hack Sticker</a> from <a href="https://tenor.com/search/pepe+hack-stickers">Pepe Hack Stickers</a>
     </div>
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </body>
