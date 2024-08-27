@@ -2,6 +2,44 @@
 layout: default
 ---
 
+Tämä on Interweb!
+
+Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla parempi ajan saatossa. Tämä verkkosivusto toimii kuin portfolio.
+
+## Projekteja
+
+- [Phishing Server](https://github.com/Teyo1/RedTeamingStuff/tree/main/Social-Engineering/Phishing-Server)
+- [C#-hommia](https://github.com/Teyo1/C--hommat)
+- [Hammas-status](https://teijjo.fi/project/hammasstatus/hammas.html)
+- [Wazuh SIEM](https://github.com/Teyo1/wazuh-SIEM-)
+
+## LinkedIn
+
+- [Teijo Raiskio](https://www.linkedin.com/in/teijoraiskio/)
+
+## CTF juttuja
+
+- [316CTF Profile](https://play.316ctf.com/users/1127)
+- [TryHackMe Profile](https://tryhackme.com/p/Tejjjo)
+- [Metasploitable](https://github.com/Teyo1/RedTeamingStuff/tree/main/metasploitable)
+- [Kryptografia juttuja](https://github.com/Teyo1/RedTeamingStuff/tree/main/Cryptographics)
+- [Password Cracking](https://github.com/Teyo1/RedTeamingStuff/tree/main/Dictionary%20attacks)
+
+## CTF writups, etc
+
+- [Red Teaming Stuff](https://github.com/Teyo1/RedTeamingStuff/tree/main)
+
+## Scripts
+
+- [Decoding](https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Decoding)
+- [Wordlist-Expander](https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Wordlist-Scripts)
+
+# Minä IRL
+
+![Minä IRL](/pics/IMG-20180823-WA0005.jpg)
+
+---
+
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
 [Link to another page](./another-page.html).
@@ -28,96 +66,3 @@ var fun = function lang(l) {
   dateformat.i18n = require('./lang/' + l)
   return true;
 }
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
