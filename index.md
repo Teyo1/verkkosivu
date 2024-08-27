@@ -16,6 +16,7 @@ Packets: Sent = 4, Received = 4, Compromised = 0 (0% loss rate)
 Round-Trip Times (ms): Min = 48, Max = 60, Average = 55
 
 $ Connection stable. Monitoring engaged. All systems nominal.
+
 ![Hackerman](https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif)
 
 
