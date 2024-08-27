@@ -28,7 +28,7 @@ $ Connection stable. Monitoring engaged. All systems nominal.
 
 
 
-# Red Teaming-juttuja
+# [Red Teaming-juttuja](https://github.com/Teyo1/verkkosivu/blob/main/redteamingstuff.md)
 
 ## 316CTF
 > "Welcome to 316ctf! This FREE persistent and growing Capture-the-Flag game is intended for middle school students, high school students, and anybody else interested in learning technical skills in cybersecurity. There are currently 200 challenges ready for you. Press ‘Play’ and enjoy! 🤜🤛"
