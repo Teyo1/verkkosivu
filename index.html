@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teijjo.fi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #d9d9d9, #f2f2f2); /* Gradient from left (#d9d9d9) to right (#f2f2f2) */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .dropdown span {
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .dropdown span:hover {
+            background-color: #555;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto; /* Center the image */
+        }
+        .section {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            width: 80%;
+            background-color: #f2f2f2;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tämä on Interweb!</h1>
+        <nav class="navbar">
+            <div class="dropdown">
+                <span>Projekteja</span>
+                <div class="dropdown-content">
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/Social-Engineering/Phishing-Server">Phishing Server</a>
+                    <a href="https://github.com/Teyo1/C--hommat">C#-hommia</a>
+                    <a href="https://teijjo.fi/project/hammasstatus/hammas.html">Hammas-status</a>
+                    <a href="https://github.com/Teyo1/wazuh-SIEM-">Wazuh SIEM</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span>LinkedIn</span>
+                <div class="dropdown-content">
+                    <a href="https://www.linkedin.com/in/teijoraiskio/">Teijo Raiskio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span>CTF juttuja</span>
+                <div class="dropdown-content">
+                    <a href="https://play.316ctf.com/users/1127">316CTF Profile</a>
+                    <a href="https://tryhackme.com/p/Tejjjo">TryHackMe Profile</a>
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/metasploitable">Metasploitable</a>
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/Cryptographics">Kryptografia juttuja</a>
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/Dictionary%20attacks">Password Cracking</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span>CTF writups, etc</span>
+                <div class="dropdown-content">
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main">Red Teaming Stuff</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span>Scripts</span>
+                <div class="dropdown-content">
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Decoding">Decoding</a>
+                    <a href="https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Wordlist-Scripts">Wordlist-Expander</a>
+            </div>
+        </nav>
+    </header>
+    <div class="sidebar">
+        <h2>Hei, teretulemast!</h2>
+        <p>Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla parempi ajan saatossa. Tämä verkkosivusto toimii kuin portfolio.</p>
+    </div>
+    <div class="section">
+        <h2>Minä IRL</h2>
+        <img src="/pics/IMG-20180823-WA0005.jpg" alt="Minä IRL">
+    </div>
+</body>
+</html>
