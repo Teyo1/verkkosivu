@@ -28,7 +28,7 @@ $ Connection stable. Monitoring engaged. All systems nominal.
 
 
 
-# [Red Teaming-juttuja](https://github.com/Teyo1/verkkosivu/blob/main/redteamingstuff.md)
+# [Red Teaming-juttuja](https://github.com/Teyo1/verkkosivu/blob/main/redteamingstuff.html)
 > Sisältää seuraavia aiheita
 
 ## 316CTF
