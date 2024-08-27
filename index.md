@@ -1,8 +1,7 @@
 ---
 layout: default
 ---
-
-```shell
+````shell
 $ ping teijjo.fi -a
 PING teijjo.fi [0xb9c76d99] with 32 bytes of encrypted payload:
 
@@ -17,8 +16,7 @@ Packets: Sent = 4, Received = 4, Compromised = 0 (0% loss rate)
 Round-Trip Times (ms): Min = 48, Max = 60, Average = 55
 
 $ Connection stable. Monitoring engaged. All systems nominal.
-
-
+````
 
 
 ### Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla parempi ajan saatossa. Tämä verkkosivusto toimii kuin portfolio.
