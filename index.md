@@ -6,14 +6,10 @@ Tämä on Interweb!
 
 Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla parempi ajan saatossa. Tämä verkkosivusto toimii kuin portfolio.
 
-## Projekteja
+# Mikä on homman nimi?
 
-- [Phishing Server](https://github.com/Teyo1/RedTeamingStuff/tree/main/Social-Engineering/Phishing-Server)
-- [C#-hommia](https://github.com/Teyo1/C--hommat)
-- [Hammas-status](https://teijjo.fi/project/hammasstatus/hammas.html)
-- [Wazuh SIEM](https://github.com/Teyo1/wazuh-SIEM-)
 
-## LinkedIn
+# 
 
 - [Teijo Raiskio](https://www.linkedin.com/in/teijoraiskio/)
 
@@ -48,17 +44,22 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
-# Header 1
+# Projekteja
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
-## Header 2
+# Red Teaming-juttuja
+[](https://github.com/Teyo1/RedTeamingStuff/tree/main)
 
 > This is a blockquote following a header.
 >
 > When something is important enough, you do it even if the odds are not in your favor.
 
 ### Header 3
+
+
+## LinkedIn
+- [Teijo Raiskio](https://www.linkedin.com/in/teijoraiskio/)
 
 ```js
 // Javascript code with syntax highlighting.
