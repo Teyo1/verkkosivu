@@ -65,5 +65,11 @@ $ Connection stable. Monitoring engaged. All systems nominal.
 # Projekteja
 Hammasstatus-projekti
 
+# Koodaushommia
+## https://github.com/Teyo1/C--hommat
+### https://github.com/Teyo1/C--hommat/tree/main/pinta-ala%20laskin
+### https://github.com/Teyo1/C--hommat/tree/main/tietovisa
+### https://github.com/Teyo1/C--hommat/tree/main/verolaskuri
+
 ## LinkedIn
 - [Teijo Raiskio](https://www.linkedin.com/in/teijoraiskio/)
