@@ -3,17 +3,17 @@ layout: default
 ---
 ````shell
 $ ping teijjo.fi -a
-PING teijjo.fi [<span style="color:#00ff00;">0xb9c76d99</span>] with 32 bytes of encrypted payload:
+PING teijjo.fi [0xb9c76d99] with 32 bytes of encrypted payload:
 
-[<span style="color:#00ff00;">+</span>] Response from <span style="color:#00ff00;">0xb9c76d99</span>: bytes=32 time=<span style="color:#ffff00;">60ms</span> TTL=58 [<span style="color:#ff4500;">RSA encrypted</span>]
-[<span style="color:#00ff00;">+</span>] Response from <span style="color:#00ff00;">0xb9c76d99</span>: bytes=32 time=<span style="color:#ffff00;">58ms</span> TTL=58 [<span style="color:#ff4500;">AES-256 encrypted</span>]
-[<span style="color:#00ff00;">+</span>] Response from <span style="color:#00ff00;">0xb9c76d99</span>: bytes=32 time=<span style="color:#ffff00;">48ms</span> TTL=58 [<span style="color:#ff4500;">Quantum-Safe encryption</span>]
-[<span style="color:#00ff00;">+</span>] Response from <span style="color:#00ff00;">0xb9c76d99</span>: bytes=32 time=<span style="color:#ffff00;">56ms</span> TTL=58 [<span style="color:#ff4500;">Zero-Knowledge proof verified</span>]
+[+] Response from 0xb9c76d99: bytes=32 time=60ms TTL=58 [RSA encrypted]
+[+] Response from 0xb9c76d99: bytes=32 time=58ms TTL=58 [AES-256 encrypted]
+[+] Response from 0xb9c76d99: bytes=32 time=48ms TTL=58 [Quantum-Safe encryption]
+[+] Response from 0xb9c76d99: bytes=32 time=56ms TTL=58 [Zero-Knowledge proof verified]
 
 ----- Ping Summary -----
-Status: Connection to <span style="color:#00ff00;">teijjo.fi</span> established. Encryption protocol validated.
+Status: Connection to teijjo.fi established. Encryption protocol validated.
 Packets: Sent = 4, Received = 4, Compromised = 0 (0% loss rate)
-Round-Trip Times (ms): Min = <span style="color:#ffff00;">48ms</span>, Max = <span style="color:#ffff00;">60ms</span>, Average = <span style="color:#ffff00;">55ms</span>
+Round-Trip Times (ms): Min = 48, Max = 60, Average = 55
 
 $ Connection stable. Monitoring engaged. All systems nominal.
 ````
