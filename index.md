@@ -7,7 +7,7 @@ Tämä on Interweb!
 Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla parempi ajan saatossa. Tämä verkkosivusto toimii kuin portfolio.
 
 # Mikä on homman nimi?
-
+> Sivusto tarjoaa paikan jakaa omia projekteja, LinkedIn-profiilin, CTF-haasteisiin liittyviä saavutuksia sekä erilaisia skriptejä. Lisäksi sivusto esittelee tekijänsä "IRL" -kuvalla, ja se kasvaa ja kehittyy ajan myötä, kun uusia projekteja ja sisältöä lisätään. Sivuston tarkoituksena on toimia käyntikorttina, josta löytyy kaikki olennainen tieto yhdestä paikasta – tyylikkäästi ja järjestelmällisesti.
 
 # 
 
