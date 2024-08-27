@@ -13,7 +13,6 @@ Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla 
 
 # Red Teaming-juttuja
 
-
 ## 316CTF
 > "Welcome to 316ctf! This FREE persistent and growing Capture-the-Flag game is intended for middle school students, high school students, and anybody else interested in learning technical skills in cybersecurity. There are currently 200 challenges ready for you. Press ‘Play’ and enjoy! 🤜🤛"
 - [316CTF Profile](https://play.316ctf.com/users/1127)
@@ -32,41 +31,21 @@ Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla 
 ## Dictionary attacks
 - [Password Cracking](https://github.com/Teyo1/RedTeamingStuff/tree/main/Dictionary%20attacks)
 
+
 # CTF writups, etc
 > Kasaan tänne kirjoituksia "rootatuista" koneista sekä 
 - [Red Teaming Stuff](https://github.com/Teyo1/RedTeamingStuff/tree/main)
 
-## Scripts
 
+# Scriptejä
+> Täällä on erilaisissa tilanteissa käytettäviä skriptejä.
+### bash
 - [Decoding](https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Decoding)
 - [Wordlist-Expander](https://github.com/Teyo1/RedTeamingStuff/tree/main/Scripts/Wordlist-Scripts)
 
-# Minä IRL
 
-![Minä IRL](/pics/IMG-20180823-WA0005.jpg)
-
----
-
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
-
-[Link to another page](./another-page.html).
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
 # Projekteja
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-# Red Teaming-juttuja
-[](https://github.com/Teyo1/RedTeamingStuff/tree/main)
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
 
 
 ## LinkedIn
