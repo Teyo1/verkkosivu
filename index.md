@@ -11,7 +11,8 @@ Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla 
 
 
 
-## CTF-juttuja
+# Red Teaming-juttuja
+
 
 ## 316CTF
 > "Welcome to 316ctf! This FREE persistent and growing Capture-the-Flag game is intended for middle school students, high school students, and anybody else interested in learning technical skills in cybersecurity. There are currently 200 challenges ready for you. Press ‘Play’ and enjoy! 🤜🤛"
@@ -31,8 +32,8 @@ Hei, teretulemast! Tämä on tämmönen verkkosivuprojekti, josta saattaa tulla 
 ## Dictionary attacks
 - [Password Cracking](https://github.com/Teyo1/RedTeamingStuff/tree/main/Dictionary%20attacks)
 
-## CTF writups, etc
-
+# CTF writups, etc
+> Kasaan tänne kirjoituksia "rootatuista" koneista sekä 
 - [Red Teaming Stuff](https://github.com/Teyo1/RedTeamingStuff/tree/main)
 
 ## Scripts
