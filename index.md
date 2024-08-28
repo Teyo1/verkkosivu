@@ -28,16 +28,15 @@ $ Connection stable. Monitoring engaged. All systems nominal.
 
 
 
-# [Red Teaming-juttuja](https://github.com/Teyo1/verkkosivu/blob/main/redteamingstuff.html)
+# [Red Teaming-juttuja]([https://github.com/Teyo1/verkkosivu/blob/main/redteamingstuff.html)](https://teyo1.github.io/RedTeamingStuff/)
 > Sisältää seuraavia aiheita
-
-## 316CTF
-## TryHackMe
-## metasploitable
-## Kryptografia
-## Dictionary attacks
-# CTF writups, etc
-# Scriptejä
+316CTF
+TryHackMe
+metasploitable
+Kryptografia
+Dictionary attacks
+CTF writups, etc
+Scriptejä
 
 
 
