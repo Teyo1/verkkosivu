@@ -28,7 +28,7 @@ $ Connection stable. Monitoring engaged. All systems nominal.
 
 
 
-# [Red Teaming-juttuja](https://teyo1.github.io/RedTeamingStuff/)
+# [[Red Teaming-juttuja](https://teyo1.github.io/RedTeamingStuff/)
 > Sisältää seuraavia aiheita
 316CTF
 TryHackMe
@@ -41,7 +41,7 @@ Scriptejä
 
 
 # Projekteja
-Hammasstatus-projekti
+[Hammasstatus-projecti](https://github.com/Teyo1/verkkosivu/blob/main/project/hammasstatus/hammas.html)
 
 # Koodaushommia
 ## https://github.com/Teyo1/C--hommat
