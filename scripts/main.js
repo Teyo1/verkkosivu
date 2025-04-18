@@ -25,7 +25,7 @@ async function open_terminal(){
   await delay(700);
   createText("Starting the server...");
   await delay(1500);
-  createText("Valmis....:");
+  createText("Valmis...");
  
   createCode("whois -t", "kenestä on kyse");
   createCode("project -a", "linkkaa projekteja");
