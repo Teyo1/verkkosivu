@@ -30,6 +30,7 @@ async function open_terminal(){
   createCode("whois -t", "kenestä on kyse");
   createCode("project -a", "linkkaa projekteja");
   createCode("social -a", "linkkaa LinkedIn-profiilin ja GitHubin");
+  createCode("PGP", "julkinen avain");
   createCode("clear", "tyhjentää terminaalin");
   createCode("help", "näyttää komennot");
   await delay(500);
@@ -74,6 +75,7 @@ async function getInputValue(){
     createCode("whois -t", "kerron itsestäni");
     createCode("social -a", "sosiaaliset verkostot yms");
     createCode("clear", "Tyhjennä terminaali");
+    createCode("PGP", "julkinen avain");
     
   }
   else if(value === "project -a"){
@@ -92,9 +94,16 @@ async function getInputValue(){
   }
   else if(value === "social"){
     trueValue(value);
-    createText("Didn't you mean: social -a?")
+    createText("Ethän vain tarkoittanut: social -a?")
   }
-  
+  else if(value === "PGP"){ 
+    trueValue(value);
+    createText('Siitä linkkiä: <a href="/PGP/index.html" target="_blank">PGP Key</a>');
+  }
+  else if(value === "pgp"){
+    trueValue(value);
+    createText("Tarkoititko: PGP?")
+}
   else if(value === "clear"){
     document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
