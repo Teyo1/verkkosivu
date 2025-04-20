@@ -81,7 +81,7 @@ async function getInputValue(){
   else if(value === "project -a"){
     trueValue(value);
     createText("<a href='https://github.com/teyo1' target='_blank'><i class='fab fa-github white'></i> github.com/teyo1</a>")
-    createText("<a href='/hammasStatus/index.html' target='_blank'><i class='fab fa-github white'></i> hammasprojekti</a>")
+    createText("<a href='/project/hammasstatus/hammas.html' target='_blank'><i class='fab fa-github white'></i> hammasprojekti</a>")
 
   }
   else if(value === "whois -t"){
