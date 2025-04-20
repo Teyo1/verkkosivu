@@ -82,6 +82,7 @@ async function getInputValue(){
     trueValue(value);
     createText("<a href='https://github.com/teyo1' target='_blank'><i class='fab fa-github white'></i> github.com/teyo1</a>")
     createText("<a href='/project/hammasstatus/hammas.html' target='_blank'><i class='fab fa-github white'></i> hammasprojekti</a>")
+    createText("<a href='/project/redteaming' target='_blank'><i class='fab fa-github white'></i> Redteaming-juttuja</a>")
     createText("<a href='https://github.com/Teyo1/RedTeamingStuff/tree/main/Social-Engineering/Phishing-Server' target='_blank'><i class='fab fa-github white'></i> Tietojenkalastelu-harjoite (Oulun yliopiston kurssi)</a>")
 
   }
