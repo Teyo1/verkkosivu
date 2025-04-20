@@ -3,3 +3,4 @@ document.querySelectorAll('.toggle').forEach(toggle => {
         toggle.classList.toggle('open');
     });
 });
+  
