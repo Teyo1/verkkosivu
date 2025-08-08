@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blue Teaming-juttuja</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Blue Teaming-juttuja</h1>
+  <p class="quote">Tämä osio sisältää puolustuksellista tietoturvaa — kuten lokien valvontaa, uhkien havaitsemista ja SIEM-järjestelmiä.</p>
+
+  <div class="section">
+    <h2 class="toggle">🔍 Mikä on Blue Teaming?</h2>
+    <div class="content card">
+      <p>Blue Teaming viittaa kyberturvallisuuden puolustavaan puoleen. Se sisältää järjestelmien valvonnan, uhkien torjumisen, ja hyökkäysten jälkikäsittelyn.</p>
+      <ul>
+        <li>🔴 Red Team = hyökkääjät</li>
+        <li>🔵 Blue Team = puolustajat</li>
+        <li>Päätavoitteena estää, tunnistaa ja reagoida hyökkäyksiin.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="toggle">🛠 Wazuh Dashboardin käyttö</h2>
+    <div class="content card">
+      <p>Wazuh on ilmainen avoimen lähdekoodin SIEM-järjestelmä, jota käytetään mm. uhkien havaitsemiseen ja lokien analysointiin.</p>
+      <p><strong>IP:</strong> 192.168.1.10 (staattinen, ilman internet-yhteyttä)</p>
+      <p>Kirjaudu sisään Wazuhin antamilla tunnuksilla asennuksen yhteydessä.</p>
+      <img src="https://github.com/Teyo1/wazuh-SIEM-/assets/131766045/e06cfb28-f2ab-45c9-9b1d-0c1fa0a027b9" alt="Login page" style="max-width:100%;">
+      <img src="https://github.com/Teyo1/wazuh-SIEM-/assets/131766045/08a016e5-4c6c-4f40-8911-86f740d55e8e" alt="Credentials" style="max-width:100%;">
+      <img src="https://github.com/Teyo1/wazuh-SIEM-/assets/131766045/235a5135-ef18-4386-a09a-d2d4d9c33124" alt="Dashboard" style="max-width:100%;">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="toggle">📈 Lokien valvonta ja uhkien tunnistus</h2>
+    <div class="content card">
+      <ul>
+        <li>Analysoi järjestelmien ja sovellusten lokeja</li>
+        <li>Hyödynnä SIEMin hälytyksiä</li>
+        <li>Tarkista epäilyttävät IP-osoitteet, kirjautumisyritykset, ja käyttäjäkäytös</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="toggle">🚨 Incident Response</h2>
+    <div class="content card">
+      <p>Mitä tehdä kun havaitset hyökkäyksen?</p>
+      <ol>
+        <li>🔍 Tunnista — mitä tapahtui ja milloin</li>
+        <li>🛑 Eristä — katkaise mahdollinen hyökkääjä</li>
+        <li>🧹 Poista — haitallinen koodi tai käyttäjä</li>
+        <li>📄 Dokumentoi — mitä opittiin?</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
