@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager - Teijo Raiskio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/subpage.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            color: #cccccc;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(61, 90, 254, 0.2);
+            border-color: #3d5afe;
+            color: #9CEAF3;
+        }
+        
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .upload-zone {
+            border: 2px dashed rgba(156, 234, 243, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .upload-zone.dragover {
+            border-color: #9CEAF3;
+            background: rgba(156, 234, 243, 0.1);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(45deg, #3d5afe, #9CEAF3);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            margin: 10px;
+        }
+        
+        .content-editor {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            color: #9CEAF3;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            color: #ffffff;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #9CEAF3;
+            box-shadow: 0 0 0 2px rgba(156, 234, 243, 0.2);
+        }
+        
+        .content-preview {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .preview-title {
+            color: #9CEAF3;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .save-btn {
+            background: rgba(90, 215, 134, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            margin-right: 10px;
+        }
+        
+        .delete-btn {
+            background: rgba(247, 143, 133, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .content-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-title {
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .item-meta {
+            color: #cccccc;
+            font-size: 12px;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .action-btn {
+            background: rgba(156, 234, 243, 0.2);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            color: #9CEAF3;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header class="subpage-header">
+        <a class="back-link" href="../index.html">⬅ Takaisin pääsivulle</a>
+        <div style="color: #9CEAF3; font-weight: 500;">🔐 Content Manager</div>
+    </header>
+    
+    <div class="admin-container">
+        <h1>📝 Content Manager</h1>
+        <p class="quote">Hallitse portfolion sisältöä - lataa CV, projektitiedostoja ja muuta sisältöä.</p>
+        
+        <div class="section-tabs">
+            <div class="tab active" data-section="cv">📄 CV & Ansioluettelo</div>
+            <div class="tab" data-section="projects">🚀 Projektit</div>
+            <div class="tab" data-section="certificates">🏆 Sertifikaatit</div>
+            <div class="tab" data-section="documents">📁 Dokumentit</div>
+        </div>
+        
+        <!-- CV Section -->
+        <div class="content-section active" id="cv">
+            <div class="content-editor">
+                <h3>CV / Ansioluettelo</h3>
+                <div class="upload-zone" data-type="cv">
+                    <div style="font-size: 32px; margin-bottom: 15px;">📄</div>
+                    <div>Pudota CV-tiedosto tähän (PDF)</div>
+                    <button class="upload-btn" onclick="document.getElementById('cvInput').click()">
+                        Valitse CV-tiedosto
+                    </button>
+                    <input type="file" id="cvInput" class="file-input" accept=".pdf" onchange="handleFileUpload(event, 'cv')">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">CV Kuvaus</label>
+                    <textarea class="form-textarea" id="cvDescription" placeholder="Kirjoita lyhyt kuvaus CV:stäsi..."></textarea>
+                </div>
+                
+                <button class="save-btn" onclick="saveContent('cv')">💾 Tallenna CV</button>
+            </div>
+            
+            <div class="content-preview" id="cvPreview">
+                <div class="preview-title">📄 Nykyinen CV</div>
+                <div id="cvContent">Ei CV:tä ladattu</div>
+            </div>
+        </div>
+        
+        <!-- Projects Section -->
+        <div class="content-section" id="projects">
+            <div class="content-editor">
+                <h3>Projektit</h3>
+                <div class="upload-zone" data-type="project">
+                    <div style="font-size: 32px; margin-bottom: 15px;">🚀</div>
+                    <div>Pudota projektitiedostoja tähän</div>
+                    <button class="upload-btn" onclick="document.getElementById('projectInput').click()">
+                        Valitse projektitiedostoja
+                    </button>
+                    <input type="file" id="projectInput" class="file-input" accept=".pdf,.doc,.docx,.ppt,.pptx" multiple onchange="handleFileUpload(event, 'project')">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Projektin nimi</label>
+                    <input type="text" class="form-input" id="projectName" placeholder="Esim. Tietoturva-analyysi">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Kuvaus</label>
+                    <textarea class="form-textarea" id="projectDescription" placeholder="Kuvaile projektia..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Teknologiat</label>
+                    <input type="text" class="form-input" id="projectTech" placeholder="Python, Docker, AWS...">
+                </div>
+                
+                <button class="save-btn" onclick="saveContent('project')">💾 Tallenna projekti</button>
+            </div>
+            
+            <div class="content-preview" id="projectsPreview">
+                <div class="preview-title">🚀 Projektit</div>
+                <div id="projectsContent">Ei projekteja ladattu</div>
+            </div>
+        </div>
+        
+        <!-- Certificates Section -->
+        <div class="content-section" id="certificates">
+            <div class="content-editor">
+                <h3>Sertifikaatit</h3>
+                <div class="upload-zone" data-type="certificate">
+                    <div style="font-size: 32px; margin-bottom: 15px;">🏆</div>
+                    <div>Pudota sertifikaatteja tähän (PDF)</div>
+                    <button class="upload-btn" onclick="document.getElementById('certInput').click()">
+                        Valitse sertifikaatteja
+                    </button>
+                    <input type="file" id="certInput" class="file-input" accept=".pdf" multiple onchange="handleFileUpload(event, 'certificate')">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Sertifikaatin nimi</label>
+                    <input type="text" class="form-input" id="certName" placeholder="Esim. CompTIA Security+">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Myöntäjä</label>
+                    <input type="text" class="form-input" id="certIssuer" placeholder="Esim. CompTIA">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Päivämäärä</label>
+                    <input type="date" class="form-input" id="certDate">
+                </div>
+                
+                <button class="save-btn" onclick="saveContent('certificate')">💾 Tallenna sertifikaatti</button>
+            </div>
+            
+            <div class="content-preview" id="certificatesPreview">
+                <div class="preview-title">🏆 Sertifikaatit</div>
+                <div id="certificatesContent">Ei sertifikaatteja ladattu</div>
+            </div>
+        </div>
+        
+        <!-- Documents Section -->
+        <div class="content-section" id="documents">
+            <div class="content-editor">
+                <h3>Muut dokumentit</h3>
+                <div class="upload-zone" data-type="document">
+                    <div style="font-size: 32px; margin-bottom: 15px;">📁</div>
+                    <div>Pudota dokumentteja tähän</div>
+                    <button class="upload-btn" onclick="document.getElementById('docInput').click()">
+                        Valitse dokumentteja
+                    </button>
+                    <input type="file" id="docInput" class="file-input" multiple onchange="handleFileUpload(event, 'document')">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Dokumentin nimi</label>
+                    <input type="text" class="form-input" id="docName" placeholder="Dokumentin nimi">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Kategoria</label>
+                    <select class="form-input" id="docCategory">
+                        <option value="general">Yleinen</option>
+                        <option value="research">Tutkimus</option>
+                        <option value="presentation">Esitys</option>
+                        <option value="report">Raportti</option>
+                        <option value="other">Muu</option>
+                    </select>
+                </div>
+                
+                <button class="save-btn" onclick="saveContent('document')">💾 Tallenna dokumentti</button>
+            </div>
+            
+            <div class="content-preview" id="documentsPreview">
+                <div class="preview-title">📁 Dokumentit</div>
+                <div id="documentsContent">Ei dokumentteja ladattu</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Content storage
+        let contentData = {
+            cv: null,
+            projects: [],
+            certificates: [],
+            documents: []
+        };
+
+        // Load existing content from localStorage
+        function loadContent() {
+            const saved = localStorage.getItem('portfolioContent');
+            if (saved) {
+                contentData = JSON.parse(saved);
+                updateAllPreviews();
+            }
+        }
+
+        // Save content to localStorage
+        function saveContentData() {
+            localStorage.setItem('portfolioContent', JSON.stringify(contentData));
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and sections
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding section
+                tab.classList.add('active');
+                const sectionId = tab.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Drag and drop functionality
+        document.querySelectorAll('.upload-zone').forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('dragover');
+            });
+
+            zone.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+                const type = zone.getAttribute('data-type');
+                handleFileUpload({ target: { files: e.dataTransfer.files } }, type);
+            });
+        });
+
+        // File upload handling
+        function handleFileUpload(event, type) {
+            const files = event.target.files;
+            if (!files.length) return;
+
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileData = {
+                        name: file.name,
+                        type: file.type,
+                        size: file.size,
+                        data: e.target.result,
+                        uploadDate: new Date().toISOString()
+                    };
+
+                    // Store file based on type
+                    if (type === 'cv') {
+                        contentData.cv = fileData;
+                    } else {
+                        if (!contentData[type + 's']) contentData[type + 's'] = [];
+                        contentData[type + 's'].push(fileData);
+                    }
+
+                    updatePreview(type);
+                    showNotification(`${file.name} ladattu onnistuneesti!`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Save content with metadata
+        function saveContent(type) {
+            const now = new Date().toISOString();
+            
+            if (type === 'cv') {
+                if (contentData.cv) {
+                    contentData.cv.description = document.getElementById('cvDescription').value;
+                    contentData.cv.lastModified = now;
+                }
+            } else if (type === 'project') {
+                const name = document.getElementById('projectName').value;
+                const description = document.getElementById('projectDescription').value;
+                const tech = document.getElementById('projectTech').value;
+                
+                if (contentData.projects.length > 0) {
+                    const lastProject = contentData.projects[contentData.projects.length - 1];
+                    lastProject.projectName = name;
+                    lastProject.description = description;
+                    lastProject.technologies = tech;
+                    lastProject.lastModified = now;
+                }
+            } else if (type === 'certificate') {
+                const name = document.getElementById('certName').value;
+                const issuer = document.getElementById('certIssuer').value;
+                const date = document.getElementById('certDate').value;
+                
+                if (contentData.certificates.length > 0) {
+                    const lastCert = contentData.certificates[contentData.certificates.length - 1];
+                    lastCert.certName = name;
+                    lastCert.issuer = issuer;
+                    lastCert.issueDate = date;
+                    lastCert.lastModified = now;
+                }
+            } else if (type === 'document') {
+                const name = document.getElementById('docName').value;
+                const category = document.getElementById('docCategory').value;
+                
+                if (contentData.documents.length > 0) {
+                    const lastDoc = contentData.documents[contentData.documents.length - 1];
+                    lastDoc.docName = name;
+                    lastDoc.category = category;
+                    lastDoc.lastModified = now;
+                }
+            }
+
+            saveContentData();
+            updatePreview(type);
+            showNotification('Sisältö tallennettu!');
+            
+            // Clear form fields
+            clearFormFields(type);
+        }
+
+        // Clear form fields
+        function clearFormFields(type) {
+            if (type === 'cv') {
+                document.getElementById('cvDescription').value = '';
+            } else if (type === 'project') {
+                document.getElementById('projectName').value = '';
+                document.getElementById('projectDescription').value = '';
+                document.getElementById('projectTech').value = '';
+            } else if (type === 'certificate') {
+                document.getElementById('certName').value = '';
+                document.getElementById('certIssuer').value = '';
+                document.getElementById('certDate').value = '';
+            } else if (type === 'document') {
+                document.getElementById('docName').value = '';
+                document.getElementById('docCategory').value = 'general';
+            }
+        }
+
+        // Update preview
+        function updatePreview(type) {
+            if (type === 'cv') {
+                const preview = document.getElementById('cvContent');
+                if (contentData.cv) {
+                    preview.innerHTML = `
+                        <div class="content-item">
+                            <div class="item-info">
+                                <div class="item-title">📄 ${contentData.cv.name}</div>
+                                <div class="item-meta">
+                                    ${formatFileSize(contentData.cv.size)} • 
+                                    ${new Date(contentData.cv.uploadDate).toLocaleDateString('fi-FI')}
+                                </div>
+                                ${contentData.cv.description ? `<div style="margin-top: 8px; color: #cccccc;">${contentData.cv.description}</div>` : ''}
+                            </div>
+                            <div class="item-actions">
+                                <button class="action-btn" onclick="viewFile('cv', 0)">👁 Näytä</button>
+                                <button class="action-btn" onclick="downloadFile('cv', 0)">💾 Lataa</button>
+                                <button class="delete-btn" onclick="deleteContent('cv', 0)">🗑</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    preview.innerHTML = 'Ei CV:tä ladattu';
+                }
+            } else {
+                const plural = type + 's';
+                const preview = document.getElementById(plural + 'Content');
+                const items = contentData[plural] || [];
+                
+                if (items.length === 0) {
+                    preview.innerHTML = `Ei ${getTypeName(plural)} ladattu`;
+                    return;
+                }
+
+                preview.innerHTML = items.map((item, index) => `
+                    <div class="content-item">
+                        <div class="item-info">
+                            <div class="item-title">${getTypeIcon(type)} ${item.name}</div>
+                            <div class="item-meta">
+                                ${formatFileSize(item.size)} • 
+                                ${new Date(item.uploadDate).toLocaleDateString('fi-FI')}
+                            </div>
+                            ${item.description ? `<div style="margin-top: 8px; color: #cccccc;">${item.description}</div>` : ''}
+                            ${item.projectName ? `<div style="margin-top: 8px; color: #9CEAF3; font-weight: 500;">${item.projectName}</div>` : ''}
+                            ${item.technologies ? `<div style="margin-top: 4px; color: #cccccc; font-size: 12px;">🔧 ${item.technologies}</div>` : ''}
+                            ${item.certName ? `<div style="margin-top: 8px; color: #9CEAF3; font-weight: 500;">${item.certName}</div>` : ''}
+                            ${item.issuer ? `<div style="margin-top: 4px; color: #cccccc; font-size: 12px;">🏢 ${item.issuer}</div>` : ''}
+                            ${item.issueDate ? `<div style="margin-top: 4px; color: #cccccc; font-size: 12px;">📅 ${new Date(item.issueDate).toLocaleDateString('fi-FI')}</div>` : ''}
+                            ${item.docName ? `<div style="margin-top: 8px; color: #9CEAF3; font-weight: 500;">${item.docName}</div>` : ''}
+                            ${item.category ? `<div style="margin-top: 4px; color: #cccccc; font-size: 12px;">📂 ${getCategoryName(item.category)}</div>` : ''}
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn" onclick="viewFile('${plural}', ${index})">👁 Näytä</button>
+                            <button class="action-btn" onclick="downloadFile('${plural}', ${index})">💾 Lataa</button>
+                            <button class="delete-btn" onclick="deleteContent('${plural}', ${index})">🗑</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Update all previews
+        function updateAllPreviews() {
+            updatePreview('cv');
+            updatePreview('project');
+            updatePreview('certificate');
+            updatePreview('document');
+        }
+
+        // Helper functions
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getTypeIcon(type) {
+            const icons = {
+                'project': '🚀',
+                'certificate': '🏆',
+                'document': '📁'
+            };
+            return icons[type] || '📄';
+        }
+
+        function getTypeName(type) {
+            const names = {
+                'projects': 'projekteja',
+                'certificates': 'sertifikaatteja',
+                'documents': 'dokumentteja'
+            };
+            return names[type] || type;
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'general': 'Yleinen',
+                'research': 'Tutkimus',
+                'presentation': 'Esitys',
+                'report': 'Raportti',
+                'other': 'Muu'
+            };
+            return names[category] || category;
+        }
+
+        // File operations
+        function viewFile(type, index) {
+            let fileData;
+            if (type === 'cv') {
+                fileData = contentData.cv;
+            } else {
+                fileData = contentData[type][index];
+            }
+            
+            if (fileData && fileData.data) {
+                const newWindow = window.open('', '_blank');
+                if (fileData.type === 'application/pdf') {
+                    newWindow.document.write(`
+                        <html>
+                            <head><title>${fileData.name}</title></head>
+                            <body style="margin:0; padding:0;">
+                                <iframe src="${fileData.data}" width="100%" height="100%" style="border:none;"></iframe>
+                            </body>
+                        </html>
+                    `);
+                } else {
+                    newWindow.document.write(`
+                        <html>
+                            <head><title>${fileData.name}</title></head>
+                            <body style="font-family: Arial, sans-serif; padding: 20px;">
+                                <h2>${fileData.name}</h2>
+                                <p>Tiedostotyyppi: ${fileData.type}</p>
+                                <p>Koko: ${formatFileSize(fileData.size)}</p>
+                                <p>Ladattu: ${new Date(fileData.uploadDate).toLocaleDateString('fi-FI')}</p>
+                                <hr>
+                                <p>Tiedoston esikatselu ei ole saatavilla tälle tiedostotyypille.</p>
+                            </body>
+                        </html>
+                    `);
+                }
+            }
+        }
+
+        function downloadFile(type, index) {
+            let fileData;
+            if (type === 'cv') {
+                fileData = contentData.cv;
+            } else {
+                fileData = contentData[type][index];
+            }
+            
+            if (fileData && fileData.data) {
+                const a = document.createElement('a');
+                a.href = fileData.data;
+                a.download = fileData.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        function deleteContent(type, index) {
+            if (confirm('Haluatko varmasti poistaa tämän sisällön?')) {
+                if (type === 'cv') {
+                    contentData.cv = null;
+                } else {
+                    contentData[type].splice(index, 1);
+                }
+                
+                saveContentData();
+                updatePreview(type.replace('s', ''));
+                showNotification('Sisältö poistettu');
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 8px;
+                color: white;
+                font-family: 'Fira Code', monospace;
+                font-size: 14px;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                background: ${type === 'error' ? 'rgba(247, 143, 133, 0.9)' : 'rgba(90, 215, 134, 0.9)'};
+                border: 1px solid ${type === 'error' ? '#f85149' : '#5AD786'};
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize
+        loadContent();
+
+        // Auto-save every 30 seconds
+        setInterval(saveContentData, 30000);
+    </script>
+</body>
+</html>

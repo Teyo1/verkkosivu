@@ -1,112 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGP Public Key - Teijo Raiskio</title>
+    <title>PGP Public Key - Teijo Raiskio | Secure Communication</title>
+    <meta name="description" content="Teijo Raiskio's PGP public key for secure communication and digital signatures. RSA 4096-bit encryption key for GitHub commits and confidential messaging.">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/subpage.css">
     <style>
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            padding: 20px;
-            margin: 0;
+        .project-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(61, 90, 254, 0.3);
+            border-radius: 12px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+
+        .project-section h2 {
+            color: #9CEAF3;
+            margin: 0 0 20px 0;
+            font-size: 24px;
         }
-        h1 {
-            color: #58a6ff;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .key-info {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .key-info h3 {
-            color: #7c3aed;
-            margin-top: 0;
-        }
-        .key-block {
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 15px;
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             margin: 20px 0;
-            overflow-x: auto;
         }
-        pre {
-            margin: 0;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(156, 234, 243, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(156, 234, 243, 0.5);
+            box-shadow: 0 8px 20px rgba(61, 90, 254, 0.2);
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .project-card .subtitle {
+            color: #9CEAF3;
+            font-size: 14px;
+            margin: 0 0 15px 0;
+        }
+
+        .project-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tag {
+            background: rgba(156, 234, 243, 0.1);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            color: #9CEAF3;
+            padding: 4px 8px;
+            border-radius: 4px;
             font-size: 12px;
-            line-height: 1.4;
         }
+
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            background: rgba(61, 90, 254, 0.2);
+            border: 1px solid rgba(61, 90, 254, 0.3);
+            color: #9CEAF3;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .action-btn:hover {
+            background: rgba(61, 90, 254, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .key-block {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
         .copy-button {
-            background-color: #238636;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #238636;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-family: inherit;
-            margin-top: 10px;
+            font-size: 12px;
+            font-family: 'Fira Code', monospace;
         }
+
         .copy-button:hover {
-            background-color: #2ea043;
+            background: #2ea043;
         }
-        .instructions {
-            background-color: #0f1419;
-            border-left: 4px solid #f85149;
-            padding: 15px;
+
+        pre {
+            color: #ffffff;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+            overflow-x: auto;
+            margin: 0;
+            padding-right: 100px;
+        }
+
+        .warning-box {
+            background: rgba(247, 143, 133, 0.1);
+            border: 1px solid rgba(247, 143, 133, 0.3);
+            border-radius: 8px;
+            padding: 20px;
             margin: 20px 0;
         }
-        .instructions h4 {
-            color: #f85149;
-            margin-top: 0;
+
+        .warning-box h4 {
+            color: #f78f85;
+            margin: 0 0 10px 0;
         }
-        a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+
+        .warning-box p {
+            color: #cccccc;
+            margin: 0;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔐 PGP Public Key</h1>
-        
-        <div class="key-info">
-            <h3>Key Information</h3>
-            <p><strong>Owner:</strong> Teijo &lt;teijo.raiskio@outlook.com&gt;</p>
-            <p><strong>Key ID:</strong> 6D1A1D64CBE6A421</p>
-            <p><strong>Fingerprint:</strong> 1305 8060 60DF C4EA EFB4 8494 6D1A 1D64 CBE6 A421</p>
-            <p><strong>Algorithm:</strong> RSA 4096-bit</p>
-            <p><strong>Created:</strong> 2024</p>
-        </div>
+    <header class="subpage-header">
+        <a class="back-link" href="../index.html">⬅ Takaisin pääsivulle</a>
+        <a class="gh-link" href="https://github.com/teyo1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </header>
+    
+    <div class="page">
+        <h1>🔑 PGP Public Key</h1>
+        <p class="quote">Turvallinen viestintä julkisen avaimen kryptografialla</p>
 
-        <div class="instructions">
-            <h4>How to use this key:</h4>
-            <ol>
-                <li>Copy the key block below</li>
-                <li>Save it to a file (e.g., <code>teijo_public.asc</code>)</li>
-                <li>Import it with: <code>gpg --import teijo_public.asc</code></li>
-                <li>Verify signatures with: <code>gpg --verify [signature_file] [signed_file]</code></li>
-            </ol>
-            <p>For GitHub integration, add this key to your GitHub account in Settings → SSH and GPG keys.</p>
-        </div>
+        <!-- PGP & Cryptography Section -->
+        <div class="project-section">
+            <h2>🔒 Cryptography & Secure Communication</h2>
+            
+            <div class="project-card">
+                <h3>PGP Public Key</h3>
+                <p class="subtitle">Turvallinen viestintä julkisen avaimen kryptografialla</p>
+                
+                <p>
+                    Henkilökohtainen PGP-avain turvallista viestintää ja digitaalisten 
+                    allekirjoitusten varten. Käytän tätä avainta GitHub-commitien 
+                    allekirjoittamiseen ja luottamuksellisen viestinnän salaamiseen.
+                </p>
 
-        <div class="key-block">
-            <button class="copy-button" onclick="copyKey()">📋 Copy PGP Key</button>
-            <pre id="pgp-key">
------BEGIN PGP PUBLIC KEY BLOCK-----
+                <h4>🔑 Key Information:</h4>
+                <ul>
+                    <li><strong>Owner:</strong> Teijo &lt;teijo.raiskio@outlook.com&gt;</li>
+                    <li><strong>Key ID:</strong> 6D1A1D64CBE6A421</li>
+                    <li><strong>Fingerprint:</strong> 1305 8060 60DF C4EA EFB4 8494 6D1A 1D64 CBE6 A421</li>
+                    <li><strong>Algorithm:</strong> RSA 4096-bit</li>
+                    <li><strong>Created:</strong> 2024</li>
+                </ul>
+
+                <div class="key-block">
+                    <button class="copy-button" onclick="copyKey()">📋 Copy Key</button>
+                    <pre id="pgp-key">-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGgBi+cBEAC//nlmmft3rnLoFhyDN1CWZNaVBAQTrVI2/g7IQFb9dhS9ICpK
 EEZl2n2bXreaKZqw3ifnz+m4NXjQ/esGY/4pEQ1aOA+ymmBIlDbs9uBukWUDlNX5
@@ -157,14 +245,30 @@ iOHeIg0YkG3AQJdbMdgLybQgahhuaJHKpd7Zc6XQuaYadtmHXOwsOVZE5CeKhvZq
 a6rc1qLZLpkTH6XESpqQEFgZnBkJt+efGjS981BG97KKTgxHJcFlsW1FRVnKZdKj
 wzitQsPxadYKQJaF
 =QZev
------END PGP PUBLIC KEY BLOCK-----
-            </pre>
-        </div>
-        
-        <div class="key-info">
-            <h3>Alternative Formats</h3>
-            <p><a href="teijo_public.asc" download>📥 Download as .asc file</a></p>
-            <p><a href="https://github.com/teyo1.gpg" target="_blank">🔗 GitHub GPG Key URL</a></p>
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+                </div>
+
+                <h4>📥 How to Use:</h4>
+                <ol>
+                    <li>Copy the key block above</li>
+                    <li>Save it to a file (e.g., <code>teijo_public.asc</code>)</li>
+                    <li>Import it with: <code>gpg --import teijo_public.asc</code></li>
+                    <li>Verify signatures with: <code>gpg --verify [signature_file] [signed_file]</code></li>
+                </ol>
+
+                <div class="project-tags">
+                    <span class="tag">PGP</span>
+                    <span class="tag">Cryptography</span>
+                    <span class="tag">RSA 4096</span>
+                    <span class="tag">Digital Signatures</span>
+                    <span class="tag">Secure Communication</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="teijo_public.asc" download class="action-btn">📥 Download .asc</a>
+                    <a href="https://github.com/teyo1.gpg" target="_blank" rel="noopener noreferrer" class="action-btn">🔗 GitHub GPG</a>
+                </div>
+            </div>
         </div>
     </div>
 

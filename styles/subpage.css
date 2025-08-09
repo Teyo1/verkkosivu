@@ -1,0 +1,132 @@
+/* Shared subpage theme to match main site's look without desktop/terminal layout */
+
+/* Base */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Fira Code', monospace;
+  color: #eeeeee;
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 50%, #1a1a2e 100%);
+}
+
+/* KDE-like subtle accents */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(61, 90, 254, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 85, 85, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(87, 227, 137, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #eeeeee;
+  transition: all 0.2s ease;
+}
+a:hover {
+  color: #9CEAF3;
+  text-shadow: 0 0 8px rgba(156, 234, 243, 0.5);
+}
+
+/* Layout */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.subpage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+}
+
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Cards/Sections */
+.section { margin-bottom: 20px; }
+
+.card,
+.key-block,
+.key-info,
+.instructions {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+}
+
+.instructions {
+  border-left: 4px solid #f85149;
+}
+
+/* Headings & text */
+h1 { font-size: 28px; font-weight: 600; margin: 12px 0 16px; color: #ffffff; }
+h2 { font-size: 20px; font-weight: 600; margin: 8px 0; color: #ffffff; }
+p  { line-height: 1.6; }
+.quote { color: #cccccc; font-style: italic; }
+
+/* Toggles */
+.toggle { cursor: pointer; user-select: none; }
+.content { display: none; }
+.toggle.open + .content { display: block; }
+
+/* PGP-specific */
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.copy-button {
+  background-color: #238636;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.copy-button:hover { background-color: #2ea043; }
+
+/* Scrollbars (match main) */
+::-webkit-scrollbar { width: 12px; background-color: #555; }
+::-webkit-scrollbar-track { box-shadow: inset 0 0 6px rgba(0,0,0,0.3); background-color: #555; }
+::-webkit-scrollbar-thumb { border-radius: 10px; box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: rgb(129,129,129); }
+* { scrollbar-width: thin; scrollbar-color: rgb(129,129,129) #555; }
+
+/* Responsive */
+@media (max-width: 680px) {
+  .page { padding: 16px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; }
+}
+
+

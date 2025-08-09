@@ -2,6 +2,21 @@
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
+// Return the most recent input element (active prompt)
+function getCurrentInputElement() {
+  const inputs = document.querySelectorAll(".type input");
+  return inputs.length ? inputs[inputs.length - 1] : null;
+}
+
+// Error handling for missing elements
+function safeQuerySelector(selector) {
+  const element = document.querySelector(selector);
+  if (!element) {
+    console.warn(`Element not found: ${selector}`);
+  }
+  return element;
+}
+
 // Command history
 let commandHistory = [];
 let historyIndex = -1;
@@ -39,25 +54,27 @@ const commands = {
   'project -a': {
     description: 'linkkaa projekteja',
     execute: () => {
-      createText("<a href='https://github.com/teyo1' target='_blank'><i class='fab fa-github white'></i> github.com/teyo1</a>")
+      createText("<a href='https://github.com/teyo1' target='_blank' rel='noopener noreferrer'><i class='fab fa-github white'></i> github.com/teyo1</a>")
+      createText("<a href='showcase/index.html' target='_blank'><i class='fas fa-star white'></i> Portfolio Showcase</a>")
+      createText("<a href='secpriv/index.html' target='_blank'><i class='fas fa-shield-alt white'></i> Security & Privacy Projects</a>")
+      createText("<a href='PGP/index.html' target='_blank'><i class='fas fa-key white'></i> PGP Public Key</a>")
       createText("<a href='project/hammasstatus/hammas.html' target='_blank'><i class='fab fa-github white'></i> hammasprojekti</a>")
-      createText("<a href='project/redteaming/index.html' target='_blank'><i class='fab fa-github white'></i> Redteaming-juttuja</a>")
-      createText("<a href='project/blueteaming/index.html' target='_blank'><i class='fab fa-github white'></i> Blueteaming-juttuja</a>")
-      createText("<a href='https://github.com/Teyo1/RedTeamingStuff/tree/main/Social-Engineering/Phishing-Server' target='_blank'><i class='fab fa-github white'></i> Tietojenkalastelu-harjoite (Oulun yliopiston kurssi)</a>")
     }
   },
   'whois -t': {
     description: 'kenestä on kyse',
     execute: () => {
-      createText("Hei, olen nimeltäni Teijo")
-      createText("Olen tietoturvaan suuntautunut IT-alan opiskelija, jolla on jo vankka perusosaaminen ja intohimo käytännön tekemiseen. Etsin harjoittelupaikkaa, jossa pääsen syventämään osaamistani ja kehittymään entistä paremmaksi kyberosaajaksi. <span class='blue'>SIEM, lokianalyysi, Shodan, Wazuh </span>mainitakseni muutamia osaamisalueita.")
+      createText("Hei, olen Teijo")
+      createText("Opiskelen Insinööriksi Metropolia AMK:ssa, suuntaudun tietoturvaan ja tietoverkkoihin. Olen kiinnostunut oppimaan uutta ja teen erilaisia projekteja vapaa-ajalla. Tällä hetkellä kehittelen transformer-mallia salasanalistojen tekoon, malli kehittää itseään jatkuvasti.")
     }
   },
   'social -a': {
     description: 'linkkaa LinkedIn-profiilin ja GitHubin',
     execute: () => {
-      createText("<a href='https://github.com/teyo1' target='_blank'><i class='fab fa-github white'></i> github.com/teyo1</a>")
-      createText("<a href='https://www.linkedin.com/in/teijoraiskio/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/teijoraiskio</a>")
+      createText("<a href='https://github.com/teyo1' target='_blank' rel='noopener noreferrer'><i class='fab fa-github white'></i> github.com/teyo1</a>")
+      createText("<a href='https://www.linkedin.com/in/teijoraiskio/' target='_blank' rel='noopener noreferrer'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/teijoraiskio</a>")
+      createText("<a href='https://tryhackme.com/p/Tejjjo' target='_blank' rel='noopener noreferrer'><i class='fas fa-terminal white'></i> TryHackMe</a>")
+      createText("<a href='https://play.316ctf.com/users/1127' target='_blank' rel='noopener noreferrer'><i class='fas fa-flag white'></i> 316CTF</a>")
     }
   },
   'PGP': {
@@ -66,21 +83,32 @@ const commands = {
       createText('Siitä linkkiä: <a href="PGP/index.html" target="_blank">PGP Key</a>');
     }
   },
+  'secpriv': {
+    description: 'security & privacy projects',
+    execute: () => {
+      createText('🔐 Avaamassa Security & Privacy projekteja...');
+      setTimeout(() => {
+        window.open('secpriv/index.html', '_blank');
+      }, 500);
+    }
+  },
   'clear': {
     description: 'tyhjentää terminaalin',
     execute: () => {
       document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
       document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
+      document.querySelectorAll(".type").forEach(e => e.parentNode.removeChild(e));
     }
   },
   'ls': {
     description: 'listaa projektit',
     execute: () => {
       createText("📁 <span class='blue'>projects/</span>");
+      createText("  ├── <a href='showcase/index.html' target='_blank'>showcase/</a>");
+      createText("  ├── <a href='secpriv/index.html' target='_blank'>security-privacy/</a>");
+      createText("  ├── <a href='PGP/index.html' target='_blank'>pgp-key/</a>");
       createText("  ├── <a href='project/hammasstatus/hammas.html' target='_blank'>hammasstatus/</a>");
-      createText("  ├── <a href='project/redteaming/index.html' target='_blank'>redteaming/</a>");
-      createText("  ├── <a href='project/blueteaming/index.html' target='_blank'>blueteaming/</a>");
-      createText("  └── <a href='https://github.com/teyo1' target='_blank'>github/</a>");
+      createText("  └── <a href='https://github.com/teyo1' target='_blank' rel='noopener noreferrer'>github/</a>");
     }
   },
   'repos': {
@@ -88,21 +116,26 @@ const commands = {
     execute: () => {
       createText("🔗 <span class='blue'>GitHub Repositoryt:</span>");
       githubRepos.forEach(repo => {
-        createText(`  📦 <a href='${repo.url}' target='_blank'>${repo.name}</a> (${repo.language})`);
+        createText(`  📦 <a href='${repo.url}' target='_blank' rel='noopener noreferrer'>${repo.name}</a> (${repo.language})`);
         createText(`     └── ${repo.description}`);
+        if (repo.name === 'All-Scripts') {
+          createText("     └── <a href='https://teyo1.github.io/All-Scripts/docs/' target='_blank' rel='noopener noreferrer'>Docs (GitHub Pages)</a>");
+          createText("     └── <a href='https://github.com/Teyo1/All-Scripts/tree/main/Decoding' target='_blank' rel='noopener noreferrer'>Decoding</a>");
+          createText("     └── <a href='https://github.com/Teyo1/All-Scripts/tree/main/Wordlist-Scripts' target='_blank' rel='noopener noreferrer'>Wordlist-Expander</a>");
+        }
       });
     }
   },
   'skills': {
     description: 'osaamiset ja teknologiat',
     execute: () => {
-      createText("🔒 <span class='blue'>Kyberturvallisuus Osaamiset:</span>");
-      createText("  • SIEM (Wazuh, Splunk)");
+      createText("🔒 <span class='blue'>Tietoturva osaaminen:</span>");
+      createText("  • SIEM (Wazuh)");
       createText("  • Verkkojen turvallisuus (FortiGate)");
-      createText("  • Tunkeutumistestaus (Metasploit, Port Scanning, OSINT)");
-      createText("  • Sosiaalinen suunnittelu (SET, Google Dorking)");
+      createText("  • Pentest/Redteaming (Metasploit, Port Scanning, OSINT)");
+      createText("  • Social Engineering (SET, Google Dorking)");
       createText("");
-      createText("💻 <span class='blue'>Tekniset Osaamiset:</span>");
+      createText("💻 <span class='blue'>Tekninen osaaminen:</span>");
       createText("  • Bash, Zsh");
       createText("  • Linux-hallinta");
       createText("  • Laitteisto & Virtualisointi");
@@ -208,6 +241,18 @@ const commands = {
 
 
 
+  'showcase': {
+    description: 'portfolio showcase',
+    execute: () => {
+      createText('🎯 Avaamassa portfolio showcasea...');
+      setTimeout(() => {
+        window.open('showcase/index.html', '_blank');
+      }, 500);
+    }
+  },
+
+
+
   'exit': {
     description: 'sulkee terminaalin',
     execute: () => {
@@ -243,7 +288,7 @@ app.addEventListener("keypress", async function(event){
 });
 
 app.addEventListener("keydown", function(event) {
-  const input = document.querySelector("input");
+  const input = getCurrentInputElement();
   if (!input) return;
 
   // Handle arrow keys for command history
@@ -272,7 +317,7 @@ app.addEventListener("keydown", function(event) {
 });
 
 app.addEventListener("click", function(event){
-  const input = document.querySelector("input");
+  const input = getCurrentInputElement();
   if (input) input.focus();
 })
 
@@ -284,6 +329,7 @@ async function open_terminal(){
   await typeWriter("Valmis...", 50);
  
   createCode("whois -t", "kenestä on kyse");
+  createCode("showcase", "portfolio showcase");
   createCode("project -a", "linkkaa projekteja");
   createCode("social -a", "linkkaa LinkedIn-profiilin ja GitHubin");
   createCode("skills", "osaamiset ja teknologiat");
@@ -333,12 +379,16 @@ function new_line(){
 }
 
 function removeInput(){
-  const div = document.querySelector(".type");
-  app.removeChild(div);
+  const types = document.querySelectorAll(".type");
+  if (types.length) {
+    const last = types[types.length - 1];
+    last.parentNode.removeChild(last);
+  }
 }
 
 async function getInputValue(){
-  const value = document.querySelector("input").value.trim();
+  const inputEl = getCurrentInputElement();
+  const value = inputEl ? inputEl.value.trim() : "";
   
   // Add to command history if not empty
   if (value && !commandHistory.includes(value)) {
@@ -346,7 +396,7 @@ async function getInputValue(){
   }
   
   if (value === "") {
-    trueValue("");
+    // Ignore empty input; no output section
     return;
   }
   

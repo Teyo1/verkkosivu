@@ -1,4 +1,4 @@
-// Dynamic ML Training Simulation
+// Dynamic ML Training Simulation with Tabs
 class MLTrainingSimulation {
   constructor() {
     this.currentEpoch = 1;
@@ -8,34 +8,119 @@ class MLTrainingSimulation {
     this.currentProgress = 0;
     this.currentLoss = 2.1203;
     this.isRunning = true;
+    this.activeTab = 'training';
     this.chunkNames = [
       50498, 53734, 16552, 73038, 89812, 23456, 78901, 45678, 12345, 67890,
       34567, 89012, 56789, 23456, 78901, 45678, 12345, 67890, 34567, 89012
     ];
     this.chunkIndex = 0;
+    
+    // GPU monitoring data
+    this.gpuTemp = 47;
+    this.gpuPower = 109;
+    this.gpuMemoryUsed = 9803;
+    this.gpuUtil = 100;
+    this.fanSpeed = 43;
+    this.processId = 801640;
+    
     this.init();
   }
 
   init() {
+    this.setupTabs();
     this.mlContent = document.querySelector('.ml-content');
-    this.updateTraining();
+    if (!this.mlContent) {
+      console.warn('ML content container not found');
+      return;
+    }
+    this.updateContent();
     this.startSimulation();
   }
 
-  startSimulation() {
-    setInterval(() => {
-      if (this.isRunning) {
-        this.updateTraining();
+  setupTabs() {
+    const mlWindow = document.querySelector('.ml-window');
+    if (!mlWindow) return;
+    
+    // Create tab header
+    const tabHeader = document.createElement('div');
+    tabHeader.className = 'ml-tab-header';
+    tabHeader.innerHTML = `
+      <div class="ml-tab ${this.activeTab === 'training' ? 'active' : ''}" data-tab="training">Training</div>
+      <div class="ml-tab ${this.activeTab === 'nvidia-smi' ? 'active' : ''}" data-tab="nvidia-smi">nvidia-smi</div>
+    `;
+    
+    // Insert tab header at the beginning of ml-window
+    mlWindow.insertBefore(tabHeader, mlWindow.firstChild);
+    
+    // Hide header and subtitle initially for cleaner look
+    const subtitle = document.querySelector('.ml-subtitle');
+    const header = document.querySelector('.ml-header');
+    if (header) {
+      header.style.display = 'none';
+    }
+    if (subtitle && this.activeTab === 'nvidia-smi') {
+      subtitle.style.display = 'none';
+    }
+    
+    // Add event listeners
+    tabHeader.addEventListener('click', (e) => {
+      if (e.target.classList.contains('ml-tab')) {
+        this.switchTab(e.target.dataset.tab);
       }
-    }, 3000); // Update every 3 seconds
+    });
   }
 
-  updateTraining() {
+  switchTab(tab) {
+    this.activeTab = tab;
+    
+    // Update tab appearance
+    document.querySelectorAll('.ml-tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    
+    // Show/hide subtitle and header based on active tab
+    const subtitle = document.querySelector('.ml-subtitle');
+    const header = document.querySelector('.ml-header');
+    if (subtitle && header) {
+      if (tab === 'nvidia-smi') {
+        subtitle.style.display = 'none';
+        header.style.display = 'none';
+      } else {
+        subtitle.style.display = 'block';
+        header.style.display = 'none'; // Hide header completely for cleaner look
+      }
+    }
+    
+    // Update content
+    this.updateContent();
+  }
+
+  startSimulation() {
+    // Training tab updates every 3 seconds
+    setInterval(() => {
+      if (this.isRunning && this.activeTab === 'training') {
+        this.updateContent();
+      }
+    }, 3000);
+    
+    // nvidia-smi tab updates every 0.5 seconds
+    setInterval(() => {
+      if (this.isRunning && this.activeTab === 'nvidia-smi') {
+        this.updateContent();
+      }
+    }, 500);
+  }
+
+  updateContent() {
+    if (!this.mlContent) return;
+    
     // Clear existing content
     this.mlContent.innerHTML = '';
     
-    // Generate new training output
-    this.generateTrainingOutput();
+    if (this.activeTab === 'training') {
+      this.generateTrainingOutput();
+    } else if (this.activeTab === 'nvidia-smi') {
+      this.generateNvidiaSmiOutput();
+    }
     
     // Update progress
     this.updateProgress();
@@ -117,6 +202,53 @@ class MLTrainingSimulation {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  }
+
+  generateNvidiaSmiOutput() {
+    // Update GPU stats with small random variations
+    this.gpuTemp = Math.max(40, Math.min(60, this.gpuTemp + (Math.random() - 0.5) * 2));
+    this.gpuPower = Math.max(100, Math.min(240, this.gpuPower + (Math.random() - 0.5) * 10));
+    this.gpuMemoryUsed = Math.max(9700, Math.min(10200, this.gpuMemoryUsed + (Math.random() - 0.5) * 20));
+    this.gpuUtil = Math.max(95, Math.min(100, this.gpuUtil + (Math.random() - 0.5) * 5));
+    this.fanSpeed = Math.max(35, Math.min(60, this.fanSpeed + (Math.random() - 0.5) * 3));
+    
+    const currentTime = new Date();
+    const timeStr = currentTime.toLocaleString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      year: 'numeric'
+    });
+    
+    const output = `Every 0.5s: nvidia-smi                                                                  debian: ${timeStr}
+${timeStr}
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.247.01             Driver Version: 535.247.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA CMP 90HX                On  | 00000000:01:00.0 Off |                  N/A |
+| ${Math.floor(this.fanSpeed)}%   ${Math.floor(this.gpuTemp)}C    P0             ${Math.floor(this.gpuPower)}W / 250W |   ${Math.floor(this.gpuMemoryUsed)}MiB / 10240MiB |    ${Math.floor(this.gpuUtil)}%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A    ${this.processId}      C   python                                     ${Math.floor(this.gpuMemoryUsed) - 5}MiB |
++---------------------------------------------------------------------------------------+`;
+    
+    const preElement = document.createElement('pre');
+    preElement.className = 'ml-line nvidia-smi-output';
+    preElement.textContent = output;
+    this.mlContent.appendChild(preElement);
   }
 
   updateProgress() {

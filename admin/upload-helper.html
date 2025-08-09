@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Upload Helper - Teijo Raiskio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/subpage.css">
+    <style>
+        .upload-method {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-title {
+            color: #9CEAF3;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #3d5afe;
+        }
+        
+        .step-number {
+            background: #3d5afe;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            color: #9CEAF3;
+            overflow-x: auto;
+        }
+        
+        .copy-btn {
+            background: rgba(156, 234, 243, 0.2);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            color: #9CEAF3;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .folder-structure {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+        
+        .upload-zone {
+            border: 2px dashed rgba(156, 234, 243, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .upload-zone.dragover {
+            border-color: #9CEAF3;
+            background: rgba(156, 234, 243, 0.1);
+        }
+        
+        .file-list {
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .action-btn {
+            background: rgba(156, 234, 243, 0.2);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            color: #9CEAF3;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .warning-box {
+            background: rgba(247, 143, 133, 0.1);
+            border: 1px solid rgba(247, 143, 133, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #f78f85;
+        }
+        
+        .info-box {
+            background: rgba(156, 234, 243, 0.1);
+            border: 1px solid rgba(156, 234, 243, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #9CEAF3;
+        }
+    </style>
+</head>
+<body>
+    <header class="subpage-header">
+        <a class="back-link" href="index.html">⬅ Takaisin adminiin</a>
+        <a class="gh-link" href="https://github.com/teyo1/verkkosivu" target="_blank">Repository ↗</a>
+    </header>
+    
+    <div class="page">
+        <h1>📤 GitHub Upload Helper</h1>
+        <p class="quote">Apuohjelma tiedostojen lisäämiseen GitHub-repositoryyn</p>
+        
+        <div class="info-box">
+            <strong>💡 Tärkeää:</strong> GitHub Pages ei tue tiedostojen suoraa lataamista selaimesta. 
+            Tiedostot täytyy lisätä repositoryyn manuaalisesti.
+        </div>
+        
+        <!-- Method 1: GitHub Web Interface -->
+        <div class="upload-method">
+            <div class="method-title">
+                🌐 Tapa 1: GitHub Web Interface (Helpoin)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                Mene GitHub repositoryysi: 
+                <a href="https://github.com/teyo1/verkkosivu" target="_blank" class="action-btn">
+                    Avaa Repository
+                </a>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                Luo kansiorakenne (jos ei ole):
+                <div class="folder-structure">
+verkkosivu/<br>
+├── assets/<br>
+│   ├── cv/<br>
+│   ├── projects/<br>
+│   ├── certificates/<br>
+│   └── documents/<br>
+├── project/<br>
+├── styles/<br>
+└── scripts/
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                Klikkaa "Add file" → "Upload files" GitHubissa
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                Vedä tiedostosi oikeaan kansioon:
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li>CV → <code>assets/cv/</code></li>
+                    <li>Projektit → <code>assets/projects/</code></li>
+                    <li>Sertifikaatit → <code>assets/certificates/</code></li>
+                    <li>Dokumentit → <code>assets/documents/</code></li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                Kirjoita commit message ja paina "Commit changes"
+            </div>
+        </div>
+        
+        <!-- Method 2: Git Commands -->
+        <div class="upload-method">
+            <div class="method-title">
+                ⌨️ Tapa 2: Git Komentoriviltä (Edistyneille)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                Kloonaa repository:
+                <div class="code-block">
+git clone https://github.com/teyo1/verkkosivu.git
+cd verkkosivu
+                    <button class="copy-btn" onclick="copyToClipboard('git clone https://github.com/teyo1/verkkosivu.git\ncd verkkosivu')">📋</button>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                Luo kansiorakenne:
+                <div class="code-block">
+mkdir -p assets/{cv,projects,certificates,documents}
+                    <button class="copy-btn" onclick="copyToClipboard('mkdir -p assets/{cv,projects,certificates,documents}')">📋</button>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                Kopioi tiedostosi oikeisiin kansioihin ja lisää ne:
+                <div class="code-block">
+git add assets/
+git commit -m "Add portfolio assets"
+git push origin main
+                    <button class="copy-btn" onclick="copyToClipboard('git add assets/\ngit commit -m \"Add portfolio assets\"\ngit push origin main')">📋</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Method 3: Local File Preparation -->
+        <div class="upload-method">
+            <div class="method-title">
+                📁 Tapa 3: Tiedostojen Valmistelu (Suositeltu)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                Lataa tiedostosi tähän ja anna niille kuvaavat nimet:
+                
+                <div class="upload-zone" id="uploadZone">
+                    <div style="font-size: 48px; margin-bottom: 16px;">📤</div>
+                    <div style="font-size: 18px; margin-bottom: 12px;">Pudota tiedostoja tähän</div>
+                    <div style="font-size: 14px; color: #cccccc; margin-bottom: 20px;">PDF, DOC, PPT, jne.</div>
+                    <button class="action-btn" onclick="document.getElementById('fileInput').click()">
+                        📁 Valitse tiedostoja
+                    </button>
+                    <input type="file" id="fileInput" style="display: none;" multiple>
+                </div>
+                
+                <div class="file-list" id="fileList">
+                    <!-- Files will appear here -->
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                Lataa valmistellut tiedostot GitHubiin käyttäen Tapaa 1 tai 2
+            </div>
+        </div>
+        
+        <!-- Integration Guide -->
+        <div class="upload-method">
+            <div class="method-title">
+                🔗 Tapa 4: Tiedostojen Integrointi Portfolioon
+            </div>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                Kun tiedostot ovat GitHubissa, päivitä <code>scripts/main.js</code>:
+                <div class="code-block">
+// Lisää CV-linkki
+'cv': {
+  description: 'näytä ansioluettelo',
+  execute: () => {
+    createText('📄 <a href="assets/cv/cv.pdf" target="_blank">Ansioluettelo (PDF)</a>');
+    createText('📋 Ladattu: ' + new Date().toLocaleDateString('fi-FI'));
+  }
+},
+
+// Lisää projektit
+'projects': {
+  description: 'näytä projektit',
+  execute: () => {
+    createText('🚀 <span class="blue">Projektit:</span>');
+    createText('  📦 <a href="assets/projects/project1.pdf" target="_blank">Projekti 1</a>');
+    createText('  📦 <a href="assets/projects/project2.pdf" target="_blank">Projekti 2</a>');
+  }
+}
+                    <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling.textContent)">📋</button>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                Lisää komennot help-osioon ja alkuvalikkoihin
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            <strong>⚠️ Huomio:</strong> 
+            <ul style="margin: 10px 0;">
+                <li>GitHub Pages julkaisee tiedostot automaattisesti kun ne lisätään repositoryyn</li>
+                <li>Suuret tiedostot (>25MB) eivät toimi GitHubissa</li>
+                <li>Käytä kuvaavia tiedostonimiä (ei välilyöntejä, käytä _tai -)</li>
+                <li>Älä lataa arkaluontoisia tietoja julkiseen repositoryyn</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let processedFiles = [];
+
+        // File upload handling
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            for (let file of files) {
+                const processedFile = {
+                    originalName: file.name,
+                    suggestedName: generateFileName(file.name),
+                    size: file.size,
+                    type: file.type,
+                    category: guessCategory(file.name),
+                    file: file
+                };
+                processedFiles.push(processedFile);
+            }
+            updateFileList();
+        }
+
+        function generateFileName(originalName) {
+            // Remove special characters and spaces, make lowercase
+            const extension = originalName.split('.').pop();
+            const nameWithoutExt = originalName.replace(/\.[^/.]+$/, "");
+            const cleanName = nameWithoutExt
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, '_')
+                .replace(/_+/g, '_')
+                .replace(/^_|_$/g, '');
+            return cleanName + '.' + extension.toLowerCase();
+        }
+
+        function guessCategory(filename) {
+            const name = filename.toLowerCase();
+            if (name.includes('cv') || name.includes('resume') || name.includes('ansioluettelo')) {
+                return 'cv';
+            } else if (name.includes('cert') || name.includes('certificate') || name.includes('sertifikaatti')) {
+                return 'certificates';
+            } else if (name.includes('project') || name.includes('projekti')) {
+                return 'projects';
+            } else {
+                return 'documents';
+            }
+        }
+
+        function updateFileList() {
+            if (processedFiles.length === 0) {
+                fileList.innerHTML = '';
+                return;
+            }
+
+            fileList.innerHTML = `
+                <h3>📋 Valmistellut tiedostot:</h3>
+                <div style="margin-bottom: 15px; color: #cccccc; font-size: 14px;">
+                    Tarkista ehdotetut nimet ja kategoriat ennen GitHubiin lataamista
+                </div>
+            `;
+
+            processedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <div style="flex: 1;">
+                        <div style="color: #ffffff; font-weight: 500; margin-bottom: 5px;">
+                            📄 ${file.originalName}
+                        </div>
+                        <div style="color: #cccccc; font-size: 12px; margin-bottom: 8px;">
+                            ${formatFileSize(file.size)} • ${file.type}
+                        </div>
+                        <div style="color: #9CEAF3; font-size: 13px;">
+                            📁 assets/${file.category}/<input 
+                                type="text" 
+                                value="${file.suggestedName}" 
+                                onchange="updateFileName(${index}, this.value)"
+                                style="background: transparent; border: 1px solid rgba(156, 234, 243, 0.3); 
+                                       color: #9CEAF3; padding: 2px 8px; border-radius: 4px; 
+                                       font-family: 'Fira Code', monospace; font-size: 13px; width: 200px;">
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <select onchange="updateCategory(${index}, this.value)" 
+                                style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); 
+                                       color: #ffffff; padding: 4px 8px; border-radius: 4px; font-size: 12px;">
+                            <option value="cv" ${file.category === 'cv' ? 'selected' : ''}>CV</option>
+                            <option value="projects" ${file.category === 'projects' ? 'selected' : ''}>Projektit</option>
+                            <option value="certificates" ${file.category === 'certificates' ? 'selected' : ''}>Sertifikaatit</option>
+                            <option value="documents" ${file.category === 'documents' ? 'selected' : ''}>Dokumentit</option>
+                        </select>
+                        <button class="action-btn" onclick="downloadFile(${index})">💾 Lataa</button>
+                        <button class="action-btn" onclick="removeFile(${index})" style="background: rgba(247, 143, 133, 0.2); border-color: rgba(247, 143, 133, 0.3); color: #f78f85;">🗑 Poista</button>
+                    </div>
+                `;
+                fileList.appendChild(fileItem);
+            });
+
+            // Add batch download button
+            const batchDiv = document.createElement('div');
+            batchDiv.style.cssText = 'margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);';
+            batchDiv.innerHTML = `
+                <button class="action-btn" onclick="downloadAll()" style="background: rgba(90, 215, 134, 0.2); border-color: rgba(90, 215, 134, 0.3); color: #5AD786; padding: 12px 24px;">
+                    📦 Lataa kaikki valmistellut tiedostot
+                </button>
+                <button class="action-btn" onclick="generateCommands()" style="margin-left: 10px;">
+                    🔗 Generoi terminaalikomennot
+                </button>
+            `;
+            fileList.appendChild(batchDiv);
+        }
+
+        function updateFileName(index, newName) {
+            processedFiles[index].suggestedName = newName;
+        }
+
+        function updateCategory(index, newCategory) {
+            processedFiles[index].category = newCategory;
+            updateFileList();
+        }
+
+        function downloadFile(index) {
+            const file = processedFiles[index];
+            const url = URL.createObjectURL(file.file);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.suggestedName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function removeFile(index) {
+            processedFiles.splice(index, 1);
+            updateFileList();
+        }
+
+        function downloadAll() {
+            processedFiles.forEach((file, index) => {
+                setTimeout(() => downloadFile(index), index * 500);
+            });
+        }
+
+        function generateCommands() {
+            let commands = '// Lisää nämä komennot scripts/main.js tiedostoon:\n\n';
+            
+            const categories = [...new Set(processedFiles.map(f => f.category))];
+            
+            categories.forEach(category => {
+                const files = processedFiles.filter(f => f.category === category);
+                const categoryName = {
+                    'cv': 'CV',
+                    'projects': 'Projektit',
+                    'certificates': 'Sertifikaatit',
+                    'documents': 'Dokumentit'
+                }[category];
+                
+                commands += `'${category}': {\n`;
+                commands += `  description: 'näytä ${categoryName.toLowerCase()}',\n`;
+                commands += `  execute: () => {\n`;
+                commands += `    createText('📄 <span class="blue">${categoryName}:</span>');\n`;
+                
+                files.forEach(file => {
+                    commands += `    createText('  📄 <a href="assets/${file.category}/${file.suggestedName}" target="_blank">${file.originalName}</a>');\n`;
+                });
+                
+                commands += `  }\n`;
+                commands += `},\n\n`;
+            });
+
+            // Copy to clipboard and show modal
+            copyToClipboard(commands);
+            alert('Komennot kopioitu leikepöydälle!\n\nLiitä ne scripts/main.js tiedostoon commands-objektiin.');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Kopioitu leikepöydälle!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showNotification('Kopioitu leikepöydälle!');
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 8px;
+                color: white;
+                font-family: 'Fira Code', monospace;
+                font-size: 14px;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                background: rgba(90, 215, 134, 0.9);
+                border: 1px solid #5AD786;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Add notification animations
+        const notificationStyle = document.createElement('style');
+        notificationStyle.textContent = `
+            @keyframes slideIn {
+                from { opacity: 0; transform: translateX(100%); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            @keyframes slideOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(100%); }
+            }
+        `;
+        document.head.appendChild(notificationStyle);
+    </script>
+</body>
+</html>

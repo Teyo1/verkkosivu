@@ -4,18 +4,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Teijo Raiskio - Cybersecurity Student Portfolio Terminal">
-  <meta name="keywords" content="cybersecurity, terminal, portfolio, teijo, raiskio">
+  <meta name="description" content="Teijo Raiskio - Cybersecurity & IT Student Portfolio. Interactive terminal showcasing SIEM, penetration testing, OSINT, and machine learning projects.">
+  <meta name="keywords" content="cybersecurity, SIEM, penetration testing, OSINT, machine learning, portfolio, teijo raiskio, wazuh, red teaming, blue teaming">
   <meta name="author" content="Teijo Raiskio">
-  <meta property="og:title" content="Teijo Raiskio - Terminal Portfolio">
-  <meta property="og:description" content="Interactive terminal-style portfolio showcasing cybersecurity skills and projects">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Teijo Raiskio - Cybersecurity Portfolio | SIEM & Penetration Testing">
+  <meta property="og:description" content="Interactive terminal-style portfolio showcasing cybersecurity expertise: SIEM implementation, penetration testing, OSINT investigations, and ML projects.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://teyo1.github.io/verkkosivu/">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&amp;display=swap" rel="stylesheet">
+  <meta property="og:image" content="https://teyo1.github.io/verkkosivu/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Teijo Raiskio - Cybersecurity Portfolio">
+  <meta name="twitter:description" content="Cybersecurity student specializing in SIEM, penetration testing, and OSINT">
+  <link rel="canonical" href="https://teyo1.github.io/verkkosivu/">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles/main.css" as="style">
+  <link rel="preload" href="scripts/main.js" as="script">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet"></noscript>
   <link href="styles/all.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  <title>root@teijjo.fi</title>
+  <title>root@teijjo.fi - Teijo Raiskio Cybersecurity Portfolio</title>
   <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Teijo Raiskio",
+    "url": "https://teyo1.github.io/verkkosivu/",
+    "sameAs": [
+      "https://github.com/teyo1",
+      "https://www.linkedin.com/in/teijoraiskio/",
+      "https://tryhackme.com/p/Tejjjo"
+    ],
+    "jobTitle": "Cybersecurity Student",
+    "description": "Cybersecurity and IT student specializing in SIEM implementation, penetration testing, OSINT investigations, and machine learning applications.",
+    "knowsAbout": ["Cybersecurity", "SIEM", "Penetration Testing", "OSINT", "Machine Learning", "Wazuh", "Red Teaming", "Blue Teaming"],
+    "alumniOf": "Metropolia University of Applied Sciences",
+    "worksFor": {
+      "@type": "EducationalOrganization",
+      "name": "Metropolia University of Applied Sciences"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -30,129 +66,130 @@
       <div class="stats-content">
         <div class="stat-item">
           <span class="stat-label">CPU:</span>
-          <span class="stat-value">AMD Ryzen 9 7900 (12 cores / 24 threads, Zen 4)</span>
+          <span class="stat-value">AMD Ryzen 9 7900 (12C/24T, 3.0-5.3GHz, AVX512)</span>
         </div>
         <div class="stat-item">
           <span class="stat-label">Motherboard:</span>
-          <span class="stat-value">ASUS TUF Gaming B650E (WiFi)</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">OS:</span>
-          <span class="stat-value">Debian 12</span>
+          <span class="stat-value">ASUS TUF GAMING B650-E WIFI</span>
         </div>
         <div class="stat-item">
           <span class="stat-label">RAM:</span>
           <span class="stat-value">128 GB DDR5 @ 4800 MT/s</span>
         </div>
         <div class="stat-item">
-          <span class="stat-label">Storage:</span>
-          <span class="stat-value">4 TB NVMe Gen 4 SSD</span>
+          <span class="stat-label">GPU:</span>
+          <span class="stat-value">NVIDIA CMP 90HX (10GB VRAM, CUDA 12.2)</span>
         </div>
         <div class="stat-item">
-          <span class="stat-label">GPU:</span>
-          <span class="stat-value">NVIDIA CMP 90HX</span>
+          <span class="stat-label">Storage:</span>
+          <span class="stat-value">Samsung 970 EVO Plus 1TB + WD Black SN7100 2TB</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">OS:</span>
+          <span class="stat-value">Debian 12 (bookworm), Kernel 6.1.0-37</span>
         </div>
       </div>
     </div>
 
     <!-- ML Training Simulation -->
     <div class="ml-training">
-      <div class="ml-header">
-        <span class="ml-icon">🤖</span>
-        <span class="ml-title">ML Training</span>
-        <span class="ml-status">RUNNING</span>
-      </div>
-      <div class="ml-subtitle">Currently in Progress: Training a Transformer-based model for optimized password list generation.</div>
-      <div class="ml-content">
-        <!-- Dynamic content will be generated by JavaScript -->
+      <div class="ml-window">
+        <!-- Tabs will be dynamically inserted here by JavaScript -->
+        <div class="ml-header">
+          <span class="ml-icon">🤖</span>
+          <span class="ml-title">ML Training</span>
+          <span class="ml-status">RUNNING</span>
+        </div>
+        <div class="ml-subtitle">Currently in Progress: Training a Transformer-based model for optimized password list generation.</div>
+        <div class="ml-content">
+          <!-- Dynamic content will be generated by JavaScript -->
+        </div>
       </div>
     </div>
 
 
 
     <!-- Desktop Shortcuts -->
-    <div class="desktop-shortcuts">
-      <div class="shortcut" data-command="whois -t">
-        <div class="shortcut-icon">👤</div>
+    <nav class="desktop-shortcuts" role="navigation" aria-label="Desktop shortcuts">
+      <button class="shortcut" data-command="whois -t" aria-label="About me - Personal information">
+        <div class="shortcut-icon" aria-hidden="true">👤</div>
         <div class="shortcut-label">Tietoja minusta</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="skills">
-        <div class="shortcut-icon">🔒</div>
+      <button class="shortcut" data-command="skills" aria-label="Skills - Technical expertise and technologies">
+        <div class="shortcut-icon" aria-hidden="true">🔒</div>
         <div class="shortcut-label">Osaamiset</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="repos">
-        <div class="shortcut-icon">📦</div>
+      <button class="shortcut" data-command="repos" aria-label="GitHub Projects - Repository overview">
+        <div class="shortcut-icon" aria-hidden="true">📦</div>
         <div class="shortcut-label">GitHub Projektit</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="project -a">
-        <div class="shortcut-icon">🚀</div>
+      <button class="shortcut" data-command="project -a" aria-label="Projects - Portfolio showcase">
+        <div class="shortcut-icon" aria-hidden="true">🚀</div>
         <div class="shortcut-label">Projektit</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="social -a">
-        <div class="shortcut-icon">🌐</div>
+      <button class="shortcut" data-command="social -a" aria-label="Social Networks - Professional profiles">
+        <div class="shortcut-icon" aria-hidden="true">🌐</div>
         <div class="shortcut-label">Sosiaaliset verkostot</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="weather">
-        <div class="shortcut-icon">🌤️</div>
+      <button class="shortcut" data-command="weather" aria-label="Weather - Current weather information">
+        <div class="shortcut-icon" aria-hidden="true">🌤️</div>
         <div class="shortcut-label">Sää</div>
-      </div>
+      </button>
       
-
-      
-      <div class="shortcut" data-command="date">
-        <div class="shortcut-icon">📅</div>
+      <button class="shortcut" data-command="date" aria-label="Date - Current date and time">
+        <div class="shortcut-icon" aria-hidden="true">📅</div>
         <div class="shortcut-label">Päivämäärä</div>
-      </div>
+      </button>
       
-      <div class="shortcut" data-command="PGP">
-        <div class="shortcut-icon">🔐</div>
+      <button class="shortcut" data-command="PGP" aria-label="PGP Key - Public encryption key">
+        <div class="shortcut-icon" aria-hidden="true">🔐</div>
         <div class="shortcut-label">PGP Avain</div>
-      </div>
-    </div>
+      </button>
+    </nav>
 
     <!-- Terminal Container -->
-    <div class="terminal-container">
+    <main class="terminal-container" role="main" aria-label="Interactive terminal">
       <div class="container">
-        <div class="menu">
-          <div class="buttons-flex">
-            <div class="button red"></div>
-            <div class="button yellow"></div>
-            <div class="button green"></div>
+        <header class="menu">
+          <div class="buttons-flex" aria-hidden="true">
+            <div class="button red" aria-label="Close"></div>
+            <div class="button yellow" aria-label="Minimize"></div>
+            <div class="button green" aria-label="Maximize"></div>
           </div>
           <div class="title">
-            <a href="https://github.com/teyo1" target="_blank">
-              <h1><i class='fab fa-github'></i>root@teijjo.fi</h1>
+            <a href="https://github.com/teyo1" target="_blank" rel="noopener noreferrer">
+              <h1><i class='fab fa-github' aria-hidden="true"></i>root@teijjo.fi</h1>
             </a>
           </div>
-        </div>
-        <div id="app"></div>
+        </header>
+        <div id="app" role="log" aria-live="polite" aria-label="Terminal output"></div>
       </div>
-    </div>
+    </main>
 
     <!-- Taskbar -->
-    <div class="taskbar">
-      <div class="taskbar-item active" data-command="help">
-        <i class="fas fa-question-circle"></i>
+    <nav class="taskbar" role="navigation" aria-label="Terminal commands">
+      <button class="taskbar-item active" data-command="help" aria-label="Help - Show available commands">
+        <i class="fas fa-question-circle" aria-hidden="true"></i>
         <span>Apua</span>
-      </div>
-      <div class="taskbar-item" data-command="clear">
-        <i class="fas fa-trash"></i>
+      </button>
+      <button class="taskbar-item" data-command="clear" aria-label="Clear - Clear terminal output">
+        <i class="fas fa-trash" aria-hidden="true"></i>
         <span>Tyhjennä</span>
-      </div>
-      <div class="taskbar-item" data-command="history">
-        <i class="fas fa-history"></i>
+      </button>
+      <button class="taskbar-item" data-command="history" aria-label="History - Show command history">
+        <i class="fas fa-history" aria-hidden="true"></i>
         <span>Historia</span>
-      </div>
-      <div class="taskbar-item" data-command="ls">
-        <i class="fas fa-folder"></i>
+      </button>
+      <button class="taskbar-item" data-command="ls" aria-label="Projects - List available projects">
+        <i class="fas fa-folder" aria-hidden="true"></i>
         <span>Projektit</span>
-      </div>
-    </div>
+      </button>
+    </nav>
   </div>
 
   <!-- 👇 Load scripts after DOM elements -->

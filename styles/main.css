@@ -155,12 +155,53 @@ body::before {
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  padding: 30px;
+  padding: 0;
   color: #00ff00;
   font-family: 'Courier New', monospace;
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   z-index: 10;
+  overflow: hidden;
+}
+
+.ml-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ml-tab-header {
+  display: flex;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ml-tab {
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.ml-tab:hover {
+  background: rgba(0, 255, 0, 0.1);
+  color: #00ff00;
+}
+
+.ml-tab.active {
+  background: rgba(0, 255, 0, 0.2);
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.ml-content-wrapper {
+  flex: 1;
+  padding: 30px;
   overflow-y: auto;
 }
 
@@ -195,6 +236,9 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .ml-line {
@@ -207,6 +251,16 @@ body::before {
 
 .ml-line:nth-child(even) {
   color: #ffff00;
+}
+
+.nvidia-smi-output {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #00ff00;
+  white-space: pre;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes blink {
@@ -244,6 +298,9 @@ body::before {
   cursor: pointer;
   transition: all 0.2s ease;
   min-width: 100px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
   text-align: center;
 }
 
@@ -707,6 +764,9 @@ section.type2:hover {
   color: #ffffff;
   font-size: 12px;
   font-weight: 400;
+  background: transparent;
+  border: none;
+  font-family: inherit;
 }
 
 .taskbar-item:hover {

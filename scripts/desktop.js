@@ -15,6 +15,10 @@ class DesktopEnvironment {
     
     shortcuts.forEach(shortcut => {
       shortcut.addEventListener('click', (e) => {
+        // If Shift is held, preserve previous output; otherwise clear
+        if (!e.shiftKey) {
+          commands['clear'].execute();
+        }
         const command = shortcut.getAttribute('data-command');
         this.executeCommand(command);
         this.addClickEffect(shortcut);
@@ -47,7 +51,7 @@ class DesktopEnvironment {
 
   executeCommand(command) {
     if (commands[command]) {
-      // Clear terminal first
+      // Clear visible output but keep history; preserve last input prompt only if desired
       commands['clear'].execute();
       
       // Add command to history
@@ -62,9 +66,10 @@ class DesktopEnvironment {
         commands[command].execute();
       }
       
-      // Create new line for next input
+      // Create new line for next input (avoid duplicate prompts)
       setTimeout(() => {
-        new_line();
+        const inputs = document.querySelectorAll('.type input');
+        if (!inputs.length) new_line();
       }, 100);
     }
   }
