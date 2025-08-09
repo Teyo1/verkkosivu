@@ -48,6 +48,8 @@ const commands = {
 
       createCode("clear", "Tyhjennä terminaali");
       createCode("PGP", "julkinen avain");
+      createCode("specs", "toggle system specifications");
+      createCode("ml", "toggle ML training window");
       createCode("history", "komentohistoria");
     }
   },
@@ -55,7 +57,7 @@ const commands = {
     description: 'linkkaa projekteja',
     execute: () => {
       createText("<a href='https://github.com/teyo1' target='_blank' rel='noopener noreferrer'><i class='fab fa-github white'></i> github.com/teyo1</a>")
-      createText("<a href='showcase/index.html' target='_blank'><i class='fas fa-star white'></i> Portfolio Showcase</a>")
+      createText("<a href='showcase/index.html' target='_blank'><i class='fas fa-star white'></i> Portfolio Showcase (opens in new tab)</a>")
       createText("<a href='secpriv/index.html' target='_blank'><i class='fas fa-shield-alt white'></i> Security & Privacy Projects</a>")
       createText("<a href='PGP/index.html' target='_blank'><i class='fas fa-key white'></i> PGP Public Key</a>")
       createText("<a href='project/hammasstatus/hammas.html' target='_blank'><i class='fab fa-github white'></i> hammasprojekti</a>")
@@ -81,6 +83,32 @@ const commands = {
     description: 'julkinen avain',
     execute: () => {
       createText('Siitä linkkiä: <a href="PGP/index.html" target="_blank">PGP Key</a>');
+    }
+  },
+  'specs': {
+    description: 'toggle system specifications',
+    execute: () => {
+      const hardwareStats = document.getElementById('hardware-stats');
+      if (hardwareStats.style.display === 'none') {
+        hardwareStats.style.display = 'block';
+        createText('💻 System specs displayed');
+      } else {
+        hardwareStats.style.display = 'none';
+        createText('💻 System specs hidden');
+      }
+    }
+  },
+  'ml': {
+    description: 'toggle ML training window',
+    execute: () => {
+      const mlTraining = document.getElementById('ml-training');
+      if (mlTraining.style.display === 'none') {
+        mlTraining.style.display = 'block';
+        createText('🤖 ML Training window displayed');
+      } else {
+        mlTraining.style.display = 'none';
+        createText('🤖 ML Training window hidden');
+      }
     }
   },
   'secpriv': {

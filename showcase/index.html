@@ -172,20 +172,7 @@
             margin-bottom: 1.5rem;
         }
         
-        .card-icon {
-            font-size: 3rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 2px 4px rgba(0, 212, 255, 0.3));
-            transition: all 0.3s ease;
-        }
-        
-        .showcase-card:hover .card-icon {
-            transform: scale(1.1);
-            filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.5));
-        }
+
         
         .card-title {
             font-size: 1.6rem;
@@ -425,6 +412,7 @@
             </p>
             <div class="hero-cta">
                 <a href="#contact-section" class="cta-primary">Contact Me</a>
+                <a href="../index.html" class="cta-secondary">🏠 Homepage</a>
                 <a href="https://github.com/teyo1" target="_blank" rel="noopener noreferrer" class="cta-secondary">View GitHub</a>
                 <a href="https://www.linkedin.com/in/teijoraiskio/" target="_blank" rel="noopener noreferrer" class="cta-secondary">LinkedIn Profile</a>
             </div>
@@ -435,7 +423,6 @@
             <!-- CV Section -->
             <div class="showcase-card">
                 <div class="card-header">
-                    <div class="card-icon">📄</div>
                     <div>
                         <h3 class="card-title">Curriculum Vitae</h3>
                         <p class="card-subtitle">Professional Background & Experience</p>
@@ -456,7 +443,6 @@
             <!-- Projects Section -->
             <div class="showcase-card">
                 <div class="card-header">
-                    <div class="card-icon">🚀</div>
                     <div>
                         <h3 class="card-title">Projects</h3>
                         <p class="card-subtitle">Technical Portfolio & Achievements</p>
@@ -476,7 +462,6 @@
             <!-- Certifications Section -->
             <div class="showcase-card">
                 <div class="card-header">
-                    <div class="card-icon">🏆</div>
                     <div>
                         <h3 class="card-title">Certifications & Training</h3>
                         <p class="card-subtitle">Professional Development & Achievements</p>
@@ -497,7 +482,6 @@
             <!-- Security Achievements Section -->
             <div class="showcase-card">
                 <div class="card-header">
-                    <div class="card-icon">🛡️</div>
                     <div>
                         <h3 class="card-title">Security Achievements & Findings</h3>
                         <p class="card-subtitle">Vulnerability Research & Responsible Disclosure</p>
@@ -512,6 +496,43 @@
                 <div class="card-actions">
                     <button class="btn btn-small" onclick="showPreview('security')">👁 Research</button>
                     <a href="https://play.316ctf.com/users/1127" target="_blank" rel="noopener noreferrer" class="btn btn-small btn-secondary">🔗 316CTF</a>
+                </div>
+            </div>
+
+            <!-- Hammas Status App -->
+            <div class="showcase-card">
+                <div class="card-content">
+                    <h3 class="card-title">🦷 Hammas Status App</h3>
+                    <p class="card-subtitle">Web-sovellus</p>
+                    <p class="card-description">Interaktiivinen web-sovellus hampaiden tilan seurantaan. Toteutettu JavaScript/HTML5 teknologioilla.</p>
+                    <div class="card-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-small" onclick="showPreview('hammas')">🎮 Kokeile</button>
+                        <a href="https://github.com/Teyo1/hammas-status" class="btn-small" target="_blank">🔗 GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformer Model Training -->
+            <div class="showcase-card">
+                <div class="card-content">
+                    <h3 class="card-title">🤖 Transformer Model Training</h3>
+                    <p class="card-subtitle">Machine Learning</p>
+                    <p class="card-description">Kehitän transformer-mallia salasanalistojen luomiseen. Malli kehittää itseään jatkuvasti ja luo laadukkaita salasanapohjia.</p>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-small" onclick="showPreview('transformer')">👁 Katsaus</button>
+                        <a href="https://github.com/Teyo1" class="btn-small" target="_blank">🔗 GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -658,6 +679,32 @@
                     
                     <h4>🤝 Community Contributions</h4>
                     <p>Active participation in open source projects, knowledge sharing, and mentoring within the cybersecurity community.</p>
+                `
+            },
+            hammas: {
+                title: "Hammas Status App",
+                content: `
+                    <h4>🦷 Hammas Status App</h4>
+                    <p>Interaktiivinen web-sovellus hampaiden tilan seurantaan. Toteutettu JavaScript/HTML5 teknologioilla.</p>
+                    <p><strong>Features:</strong></p>
+                    <ul>
+                        <li>Hampaiden tilan seuranta</li>
+                        <li>Tilan tallentaminen paikalliseen tallennustilaan</li>
+                        <li>Tilan poistaminen</li>
+                        <li>Tilan näyttäminen</li>
+                    </ul>
+                    <p><strong>Technologies:</strong> JavaScript, HTML5, CSS3, Local Storage</p>
+                    <p><em>Live demo available on GitHub repository.</em></p>
+                `
+            },
+            transformer: {
+                title: "Transformer Model Training",
+                content: `
+                    <h4>🤖 Transformer Model Training</h4>
+                    <p>Kehitän transformer-mallia salasanalistojen luomiseen. Malli kehittää itseään jatkuvasti ja luo laadukkaita salasanapohjia.</p>
+                    <p><strong>Objective:</strong> Develop a transformer model capable of generating high-quality password hashes.</p>
+                    <p><strong>Technologies:</strong> Python, PyTorch, Transformers, NLP</p>
+                    <p><em>Model is currently in development and will be trained on a large dataset of password hashes.</em></p>
                 `
             }
         };

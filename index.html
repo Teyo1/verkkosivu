@@ -58,7 +58,7 @@
   <!-- Desktop Environment -->
   <div class="desktop">
     <!-- Hardware Stats Window -->
-    <div class="hardware-stats">
+    <div class="hardware-stats" id="hardware-stats" style="display: none;">
       <div class="stats-header">
         <span class="stats-icon">💻</span>
         <span class="stats-title">System Specs</span>
@@ -92,7 +92,7 @@
     </div>
 
     <!-- ML Training Simulation -->
-    <div class="ml-training">
+    <div class="ml-training" id="ml-training" style="display: none;">
       <div class="ml-window">
         <!-- Tabs will be dynamically inserted here by JavaScript -->
         <div class="ml-header">
@@ -150,6 +150,16 @@
         <div class="shortcut-icon" aria-hidden="true">🔐</div>
         <div class="shortcut-label">PGP Avain</div>
       </button>
+      
+      <button class="shortcut" data-command="specs" aria-label="System Specs - Toggle hardware specifications">
+        <div class="shortcut-icon" aria-hidden="true">💻</div>
+        <div class="shortcut-label">System Specs</div>
+      </button>
+      
+      <button class="shortcut" data-command="ml" aria-label="ML Training - Toggle machine learning training window">
+        <div class="shortcut-icon" aria-hidden="true">🤖</div>
+        <div class="shortcut-label">ML Training</div>
+      </button>
     </nav>
 
     <!-- Terminal Container -->
@@ -171,22 +181,7 @@
       </div>
     </main>
 
-    <!-- Taskbar -->
-    <nav class="taskbar" role="navigation" aria-label="Terminal commands">
-      <button class="taskbar-item active" data-command="help" aria-label="Help - Show available commands">
-        <i class="fas fa-question-circle" aria-hidden="true"></i>
-        <span>Apua</span>
-      </button>
-      <button class="taskbar-item" data-command="clear" aria-label="Clear - Clear terminal output">
-        <i class="fas fa-trash" aria-hidden="true"></i>
-        <span>Tyhjennä</span>
-      </button>
-      <button class="taskbar-item" data-command="history" aria-label="History - Show command history">
-        <i class="fas fa-history" aria-hidden="true"></i>
-        <span>Historia</span>
-      </button>
 
-    </nav>
   </div>
 
   <!-- 👇 Load scripts after DOM elements -->
