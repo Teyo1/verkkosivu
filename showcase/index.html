@@ -6,13 +6,272 @@
     <title>Portfolio Showcase - Teijo Raiskio | Cybersecurity Projects & CV</title>
     <meta name="description" content="Comprehensive showcase of Teijo Raiskio's cybersecurity portfolio including SIEM projects, penetration testing labs, CTF achievements, and professional CV.">
     <meta name="robots" content="index, follow">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/subpage.css">
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         .showcase-section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Hero CTA Section */
+        .hero-cta {
+            background: linear-gradient(135deg, rgba(61, 90, 254, 0.15) 0%, rgba(156, 234, 243, 0.1) 100%);
+            border: 1px solid rgba(61, 90, 254, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-content h2 {
+            color: #00ffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .cta-content p {
+            color: #ffffff;
+            font-size: 18px;
+            margin: 0 0 25px 0;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary, .cta-secondary {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+            background: linear-gradient(135deg, #00ffff 0%, #00d4ff 100%);
+        }
+        
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        /* Section Headings */
+        .showcase-section h2 {
+            color: #00ffff;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        /* Card Improvements */
+        .showcase-card h3, .card-header h3 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            margin: 0 0 10px 0;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-cta {
+                padding: 30px 20px;
+                margin: 20px 0;
+            }
+            
+            .cta-content h2 {
+                font-size: 24px;
+            }
+            
+            .cta-content p {
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .showcase-section h2 {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-cta {
+                padding: 25px 15px;
+            }
+            
+            .cta-content h2 {
+                font-size: 22px;
+            }
+            
+            .cta-content p {
+                font-size: 15px;
+            }
+        }
+        
+        /* Contact Section Styles */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .contact-info h3, .contact-form-container h3 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .availability-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 12px 16px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            color: #00ff88;
+        }
+        
+        .status-indicator {
+            font-size: 12px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .submit-btn {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+            background: linear-gradient(135deg, #00ffff 0%, #00d4ff 100%);
+        }
+        
+        .form-status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-status.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            color: #00ff88;
+        }
+        
+        .form-status.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff6b6b;
+        }
+        
+        /* Contact Section Mobile */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
         
         .showcase-grid {
@@ -233,6 +492,25 @@
     <div class="page">
         <h1>🎯 Portfolio Showcase</h1>
         <p class="quote">Tutustu osaamiseeni ja projekteihin. Yksityiskohtaiset tiedot saatavilla pyynnöstä.</p>
+        
+        <!-- Hero CTA Section -->
+        <div class="hero-cta">
+            <div class="cta-content">
+                <h2>🚀 Ready to Collaborate?</h2>
+                <p>Cybersecurity professional specializing in SIEM, penetration testing, and threat analysis</p>
+                <div class="cta-buttons">
+                    <button class="cta-primary" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})">
+                        📧 Contact Me
+                    </button>
+                    <a href="https://github.com/teyo1" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+                        💻 View GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/teijoraiskio/" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+                        💼 LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
         
         <div class="security-notice">
             <strong>🔒 Tietoturvasta:</strong> Henkilökohtaiset tiedot ja yksityiskohtaiset dokumentit ovat suojattu. 
@@ -545,6 +823,51 @@
                         • Virtualisointi (Proxmox, ESXi)<br>
                         • GitHub
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="showcase-section" id="contact-section">
+            <h2>📧 Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Professional Contact</h3>
+                    <p style="color: #00d4ff; font-size: 16px; line-height: 1.8;">
+                        📧 Direct Email: <a href="mailto:teijo.raiskio@outlook.com" style="color: #00ffff;">teijo.raiskio@outlook.com</a><br>
+                        💼 LinkedIn: <a href="https://www.linkedin.com/in/teijoraiskio/" target="_blank" rel="noopener noreferrer" style="color: #00ffff;">linkedin.com/in/teijoraiskio</a><br>
+                        💻 GitHub: <a href="https://github.com/teyo1" target="_blank" rel="noopener noreferrer" style="color: #00ffff;">github.com/teyo1</a>
+                    </p>
+                    <div class="availability-status">
+                        <div class="status-indicator">🟢</div>
+                        <span>Available for cybersecurity opportunities</span>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Send Message</h3>
+                    <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">
+                        Get in touch for collaboration, job opportunities, or cybersecurity discussions.
+                    </p>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="from_name" name="from_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="reply_to" name="reply_to" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder="Company (Optional)">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon">📧</span>
+                        </button>
+                    </form>
+                    <div id="form-status" class="form-status"></div>
                 </div>
             </div>
         </div>
@@ -974,6 +1297,53 @@
         (function() {
             emailjs.init("3qyDv2WJ_29uEbG4x");
         })();
+        
+        // Handle main contact form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const formStatus = document.getElementById('form-status');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.innerHTML = '<span class="btn-text">Sending...</span><span class="btn-icon">⏳</span>';
+            submitBtn.disabled = true;
+            
+            const templateParams = {
+                from_name: formData.get('from_name'),
+                reply_to: formData.get('reply_to'),
+                company: formData.get('company') || 'Not specified',
+                message: formData.get('message')
+            };
+            
+            emailjs.send('service_jtz6u8s', 'template_n68mkrl', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    formStatus.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
+                    formStatus.className = 'form-status success';
+                    formStatus.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contact-form').reset();
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    formStatus.textContent = '❌ Failed to send message. Please try again or contact me directly.';
+                    formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                })
+                .finally(function() {
+                    // Reset button
+                    submitBtn.innerHTML = '<span class="btn-text">Send Message</span><span class="btn-icon">📧</span>';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                });
+        });
 
         function sendRequest() {
             const name = document.getElementById('contactName').value;
