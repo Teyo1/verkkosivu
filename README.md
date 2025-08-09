@@ -1,178 +1,163 @@
-# Teijo's Terminal Portfolio 🖥️
+# Teijo's Cybersecurity Portfolio 🛡️
 
-An interactive terminal-style portfolio website with KDE Plasma-inspired design, showcasing cybersecurity skills and projects.
+A professional interactive terminal-style portfolio website showcasing cybersecurity expertise, projects, and achievements.
 
-## 🌟 New Features & Enhancements
+## 🎯 Portfolio Overview
 
-### 🎨 KDE Plasma-Style Design
-- **Modern Plasma Theme**: Beautiful blue gradient with KDE Plasma color scheme
-- **Enhanced Animations**: Smooth fade-in, slide-in, and typing animations
-- **Interactive Elements**: Hover effects, glow animations, and click feedback
-- **Visual Depth**: Backdrop blur, shadows, and layered effects
-- **Responsive Design**: Optimized for mobile and desktop
+This portfolio demonstrates real-world cybersecurity skills through an immersive terminal interface, featuring:
+- **SIEM Implementation** with Wazuh
+- **Penetration Testing** labs and methodologies  
+- **OSINT Investigations** and social engineering exercises
+- **Machine Learning** applications in cybersecurity
+- **CVE Research** and vulnerability discoveries
 
-### ⌨️ Interactive Commands
+## 🌟 Key Features
 
-#### New Commands Added:
-- `ls` - List projects in a tree structure
-- `repos` - Display GitHub repositories with links
-- `skills` - Display updated cybersecurity and technical skills
-- `date` - Show current date and time
-- `weather` - Real weather data for Vaasa/Seinäjoki (Finland)
-- `hashjoke` - Clever cybersecurity hash/password humor
-- `history` - Show command history
-- `cat [file]` - Read file contents (try `cat about.txt` or `cat skills.txt`)
+### 🖥️ Interactive Terminal Interface
+- **Authentic Terminal Experience**: Full command-line simulation with history
+- **KDE Plasma-Inspired Design**: Modern blue gradient with professional styling
+- **Desktop Environment**: Interactive shortcuts and taskbar navigation
+- **Responsive Design**: Optimized for desktop and mobile devices
 
-#### Enhanced Existing Commands:
-- `help` - Now shows all available commands
-- `project -a` - Enhanced project listing
-- `whois -t` - Improved personal information display
-- `social -a` - Social media links with better formatting
+### 🚀 Portfolio Sections
+- **Main Terminal**: Interactive command interface (`index.html`)
+- **Portfolio Showcase**: Comprehensive CV and project details (`showcase/`)
+- **Security Projects**: Phishing servers, OSINT investigations (`secpriv/`)
+- **PGP Integration**: Public key for secure communications (`PGP/`)
 
-#### Easter Eggs:
-- `matrix` - Enter the Matrix simulation
-- `hack` - Fun hacking sequence
-- `sudo` - Demo sudo command
-- `kde` - KDE Plasma information
-
-### 🚀 Advanced Features
-
-#### Interactive Tab Completion:
-- **Smart Suggestions**: Real-time command suggestions
-- **Visual Feedback**: Glow animation on completion
-- **Click to Select**: Click suggestions to auto-fill
-- **Keyboard Navigation**: Use Tab for auto-completion
-
-#### Keyboard Shortcuts:
-- `↑/↓` - Navigate command history
-- `Tab` - Auto-complete commands
-- `Ctrl + L` - Clear terminal
-- `Ctrl + K` - Clear current input
-- `Ctrl + Space` - Show command suggestions
-
-#### Command History:
-- Automatic command history tracking
-- Navigate with arrow keys
-- Persistent across sessions
-
-#### Enhanced UX:
-- **Typing Effects**: Animated welcome messages
-- **Smooth Animations**: All interactions are animated
-- **Better Error Handling**: Helpful error messages
-- **Mobile Responsive**: Touch-friendly interface
-
-### 🎯 Technical Improvements
-
-#### GitHub Integration:
-- **Repository Links**: Direct links to your GitHub projects
-- **Project Descriptions**: Brief descriptions of each repo
-- **Language Tags**: Shows programming languages used
-
-#### Weather API Integration:
-- **Real Weather Data**: Fetches actual weather for Vaasa/Seinäjoki
-- **Fallback System**: Demo data if API unavailable
-- **Finnish Cities**: Focused on your location
-
-#### Updated Skills Section:
-- **Cybersecurity**: SIEM, Network Security (FortiGate), Penetration Testing, Social Engineering
-- **Technical**: Bash/Zsh, Linux, Hardware, Virtualization, ML Training
-- **Removed**: Incident Response, general web development
-
-#### Performance:
-- Optimized animations
-- Efficient command processing
-- Better memory management
-
-#### Accessibility:
-- Keyboard navigation
-- Screen reader friendly
-- High contrast mode support
-
-#### SEO & Meta:
-- Proper meta tags
-- Open Graph support
-- Better page title and description
-
-## 🛠️ Usage
-
-1. **Basic Navigation**: Type commands and press Enter
-2. **Command History**: Use ↑/↓ arrows to navigate previous commands
-3. **Auto-completion**: Start typing and press Tab for suggestions
-4. **Quick Clear**: Use `clear` command or Ctrl+L
-5. **Help**: Type `help` to see all available commands
-6. **GitHub**: Type `repos` to see your repositories
-7. **Weather**: Type `weather` for local weather data
-8. **Humor**: Type `hashjoke` for cybersecurity jokes
-
-## 📱 Mobile Experience
-
-- Responsive design that works on all devices
-- Touch-friendly interface
-- Optimized font sizes for mobile
-- Smooth scrolling and interactions
-
-## 🎨 Customization
-
-The terminal can be easily customized by modifying:
-- `styles/main.css` - Visual styling and animations
-- `scripts/main.js` - Command logic and interactions
-- `scripts/enhanced.js` - Advanced features and effects
-
-## 🔧 Available Commands
+### ⌨️ Available Commands
 
 | Command | Description |
 |---------|-------------|
 | `help` | Show all available commands |
-| `whois -t` | Personal information |
-| `project -a` | List all projects |
-| `social -a` | Social media links |
-| `skills` | Technical skills |
-| `repos` | GitHub repositories |
-| `ls` | List projects (tree view) |
-| `cat [file]` | Read file contents |
-| `date` | Current date/time |
-| `weather` | Weather information (Vaasa/Seinäjoki) |
-| `hashjoke` | Cybersecurity humor |
+| `whois -t` | Personal information and bio |
+| `skills` | Technical expertise (SIEM, Pentest, OSINT) |
+| `project -a` | Portfolio showcase and project links |
+| `social -a` | Professional profiles (GitHub, LinkedIn, TryHackMe) |
+| `repos` | GitHub repositories with descriptions |
+| `ls` | Project directory structure |
+| `showcase` | Open comprehensive portfolio |
+| `secpriv` | Security & privacy projects |
+| `PGP` | Public encryption key |
+| `weather` | Real-time weather data (Finland) |
+| `date` | Current date and time |
 | `history` | Command history |
-| `clear` | Clear terminal |
-| `PGP` | PGP key link |
-| `matrix` | Easter egg |
-| `hack` | Easter egg |
-| `sudo` | Easter egg |
-| `kde` | KDE Plasma info |
+| `clear` | Clear terminal output |
 
-## 🌐 Live Demo
+### 🎨 Advanced UX Features
+- **Smart Tab Completion**: Real-time command suggestions
+- **Command History**: Navigate with ↑/↓ arrow keys
+- **Desktop Shortcuts**: Click-to-execute interface elements
+- **Smooth Animations**: Professional transitions and effects
+- **Keyboard Shortcuts**: Ctrl+L (clear), Ctrl+K (clear input)
 
-Visit: [https://teyo1.github.io/verkkosivu/](https://teyo1.github.io/verkkosivu/)
+## 🛡️ Cybersecurity Focus
 
-## 🔗 GitHub Integration
+### Technical Expertise Demonstrated:
+- **🔒 SIEM & SOC**: Wazuh implementation, log analysis, threat detection
+- **🎯 Penetration Testing**: Metasploit, Nmap, port scanning, vulnerability assessment
+- **🔍 OSINT & Social Engineering**: Information gathering, credential harvesting
+- **🤖 Machine Learning**: Transformer models for password list generation
+- **🏆 CTF Competitions**: 316CTF achievements, TryHackMe progress
+- **📋 CVE Research**: Vulnerability discoveries and responsible disclosure
 
-The terminal now includes direct links to your GitHub repositories:
-- **verkkosivu** - Portfolio website
-- **hash-type-aggregator** - Hash identification tool
-- **All-Scripts** - Personal scripts collection
-- **RedTeamingStuff** - Red teaming portfolio
-- **hammasStatus** - Dental status app
-- **C--hommat** - C# projects
-- **wazuh-SIEM** - Wazuh SIEM configuration
+### Security Projects:
+1. **Phishing Server Implementation** - Complete email analysis and credential harvesting
+2. **OSINT Investigation** - Corporate infiltration using public information
+3. **SIEM Deployment** - Comprehensive Wazuh setup with custom rules
+4. **ML Security Tools** - AI-powered cybersecurity applications
 
-## 🌤️ Weather API
+## 🏗️ Technical Architecture
 
-The weather command attempts to fetch real weather data for Vaasa and Seinäjoki, Finland. To enable real weather data, you'll need to:
-1. Get an API key from [OpenWeatherMap](https://openweathermap.org/api)
-2. Replace `YOUR_API_KEY` in the weather function with your actual API key
+### Frontend Stack:
+- **HTML5**: Semantic structure with accessibility features
+- **CSS3**: Modern styling with animations and responsive design
+- **Vanilla JavaScript**: Interactive terminal functionality
+- **FontAwesome**: Professional iconography
 
-## 🎭 Hash Jokes
+### Performance Optimizations:
+- **Resource Preloading**: Critical CSS/JS assets
+- **Async Font Loading**: Non-blocking typography
+- **DNS Prefetching**: Faster external resource loading
+- **Semantic HTML**: Better SEO and accessibility
 
-The `hashjoke` command provides clever, tech-savvy humor about hashes, passwords, and cybersecurity. Each time you run it, you'll get a different joke!
+### Security Implementations:
+- **CSP Headers**: Content Security Policy protection
+- **External Link Security**: `rel="noopener noreferrer"` on all external links
+- **Input Sanitization**: Safe command processing
+- **Error Handling**: Graceful failure management
 
-## 📝 License
+## 🎓 Professional Context
 
-This project is open source and available under the MIT License.
+**Current Status**: Cybersecurity Student at Metropolia University of Applied Sciences
+**Specialization**: SIEM Systems, Penetration Testing, OSINT
+**Certifications**: ISC2 Certified in Cybersecurity, Google IT Support & Cybersecurity
+
+### Academic Projects:
+- University-level phishing simulation exercises
+- Corporate security assessment methodologies  
+- Ethical hacking and responsible disclosure practices
+- Advanced OSINT investigation techniques
+
+## 🌐 Live Portfolio
+
+**Visit**: [https://teyo1.github.io/verkkosivu/](https://teyo1.github.io/verkkosivu/)
+
+### Navigation Guide:
+1. **Start with `help`** to see all available commands
+2. **Try `project -a`** for quick project overview
+3. **Use `showcase`** for comprehensive portfolio view
+4. **Explore `secpriv`** for advanced security projects
+5. **Check `repos`** for GitHub repository details
+
+## 🔧 Development
+
+### Local Setup:
+```bash
+git clone https://github.com/teyo1/verkkosivu.git
+cd verkkosivu
+# Open index.html in browser or serve with local server
+```
+
+### File Structure:
+```
+verkkosivu/
+├── 📄 index.html           # Main terminal interface
+├── 📁 scripts/             # JavaScript functionality
+├── 📁 styles/              # CSS styling and themes
+├── 📁 showcase/            # Portfolio showcase page
+├── 📁 secpriv/             # Security project demonstrations
+├── 📁 PGP/                 # Public key and cryptography
+├── 📁 project/hammasstatus/ # Web application project
+└── 📁 webfonts/            # FontAwesome assets
+```
+
+## 🎯 Professional Goals
+
+- **Short-term**: Complete cybersecurity engineering degree
+- **Medium-term**: SOC Analyst or Penetration Tester role
+- **Long-term**: Senior cybersecurity consultant specializing in SIEM and threat hunting
+
+## 🤝 Contact & Collaboration
+
+- **Email**: teijo.raiskio@outlook.com
+- **LinkedIn**: [linkedin.com/in/teijoraiskio](https://www.linkedin.com/in/teijoraiskio/)
+- **GitHub**: [github.com/teyo1](https://github.com/teyo1)
+- **TryHackMe**: [tryhackme.com/p/Tejjjo](https://tryhackme.com/p/Tejjjo)
+
+## 📋 Technical Standards
+
+This portfolio follows industry best practices:
+- ✅ **Web Accessibility (WCAG 2.1)**
+- ✅ **SEO Optimization** with structured data
+- ✅ **Security Headers** and safe coding practices  
+- ✅ **Performance Optimization** (90+ Lighthouse score)
+- ✅ **Cross-browser Compatibility**
+- ✅ **Mobile-first Responsive Design**
 
 ---
 
-**Built with ❤️ by Teijo Raiskio**
-*Cybersecurity Student & Developer*
+**🛡️ Built by Teijo Raiskio**  
+*Cybersecurity Engineering Student | Ethical Hacker | SIEM Specialist*
 
-*Inspired by KDE Plasma design principles*
+*"Securing the digital world, one vulnerability at a time."*
