@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transformer Password Generator - Character-level AI model for password generation and analysis">
+  <meta name="keywords" content="transformer, password generation, machine learning, AI, cybersecurity, character-level model">
+  <meta name="author" content="Teijo Raiskio">
+  <meta property="og:title" content="Transformer Password Generator - AI-Powered Password Modeling">
+  <meta property="og:description" content="Advanced character-level Transformer model for password generation and analysis using deep learning">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teyo1.github.io/verkkosivu/project/transformer-password-generator/">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Transformer Password Generator - Teijo Raiskio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <header class="project-header">
+      <div class="header-content">
+        <h1 class="project-title">
+          <span class="icon">🔐</span>
+          Transformer Password Generator
+        </h1>
+        <p class="project-subtitle">Character-level AI model for password generation and analysis</p>
+        <div class="project-meta">
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">Transformer</span>
+          <span class="tech-tag">CUDA</span>
+          <span class="tech-tag">Machine Learning</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="project-content">
+      <section class="overview-section">
+        <h2>Project Overview</h2>
+        <p>This project implements a character-level Transformer model for password generation and analysis. It's designed to learn patterns from large password datasets and generate realistic passwords using deep learning techniques.</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Transformer Architecture</h3>
+            <p>4-layer decoder with 256 d_model and 4 attention heads for sophisticated pattern learning</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>GPU Optimized</h3>
+            <p>CUDA support with automatic mixed precision (AMP) for efficient training on 10GB VRAM</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Chunked Training</h3>
+            <p>Stream large datasets in chunks for memory-efficient processing of massive password lists</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💾</div>
+            <h3>Frequent Checkpoints</h3>
+            <p>Save progress every 10 chunks with automatic resume functionality</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-section">
+        <h2>Model Architecture</h2>
+        <div class="architecture-diagram">
+          <div class="model-layers">
+            <div class="layer input-layer">
+              <span class="layer-label">Input</span>
+              <span class="layer-desc">Character tokens (ASCII printable)</span>
+            </div>
+            <div class="layer embedding-layer">
+              <span class="layer-label">Embedding</span>
+              <span class="layer-desc">256-dimensional character embeddings</span>
+            </div>
+            <div class="layer pos-encoding">
+              <span class="layer-label">Position Encoding</span>
+              <span class="layer-desc">Learned positional embeddings</span>
+            </div>
+            <div class="layer transformer-layers">
+              <span class="layer-label">Transformer Decoder</span>
+              <span class="layer-desc">4 layers × (Self-Attention + FFN)</span>
+            </div>
+            <div class="layer output-layer">
+              <span class="layer-label">Output Projection</span>
+              <span class="layer-desc">95-class character prediction</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">Vocabulary Size:</span>
+            <span class="spec-value">95 (ASCII printable)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Model Dimensions:</span>
+            <span class="spec-value">256 (d_model)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Attention Heads:</span>
+            <span class="spec-value">4</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Layers:</span>
+            <span class="spec-value">4</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">FFN Size:</span>
+            <span class="spec-value">1024</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Dropout:</span>
+            <span class="spec-value">0.1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="usage-section">
+        <h2>Quick Start</h2>
+        
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Install Dependencies</span>
+          </div>
+          <pre><code>pip install -r requirements.txt</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Training Command</span>
+          </div>
+          <pre><code>python train.py --chunk_folder ./chunks_100m \
+  --epochs 20 --chunks_per_round 50 \
+  --validation_split 0.1 --val_every_n_chunks 50 \
+  --batch_size 512 --accum_steps 4 \
+  --num_workers 6 --prefetch_factor 4 \
+  --no_persistent_workers --pin_memory \
+  --checkpoint_every_n_chunks 10</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Resume Training</span>
+          </div>
+          <pre><code>python train.py --chunk_folder ./chunks_100m \
+  --epochs 20 --chunks_per_round 50 \
+  --validation_split 0.1 --val_every_n_chunks 50 \
+  --batch_size 512 --accum_steps 4 \
+  --num_workers 6 --prefetch_factor 4 \
+  --no_persistent_workers --pin_memory \
+  --checkpoint_every_n_chunks 10 --resume</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Generate Passwords</span>
+          </div>
+          <pre><code>python generate.py --model_path ./models/best_model.pth \
+  --num_passwords 100 --temperature 1.0 --top_k 50</code></pre>
+        </div>
+      </section>
+
+      <section class="features-section">
+        <h2>Key Features</h2>
+        
+        <div class="feature-list">
+          <div class="feature-item">
+            <h3>🔧 Flexible Data Pipeline</h3>
+            <ul>
+              <li>Interactive mode for easy setup</li>
+              <li>Automatic chunking of large password lists</li>
+              <li>Optional deduplication and shuffling</li>
+              <li>Memory-safe streaming for massive datasets</li>
+            </ul>
+          </div>
+          
+          <div class="feature-item">
+            <h3>⚡ Performance Optimized</h3>
+            <ul>
+              <li>Automatic mixed precision (AMP) for CUDA</li>
+              <li>Parallel data loading with multiple workers</li>
+              <li>Pinned memory for faster CPU-GPU transfers</li>
+              <li>Gradient accumulation for large effective batch sizes</li>
+            </ul>
+          </div>
+          
+          <div class="feature-item">
+            <h3>💾 Robust Checkpointing</h3>
+            <ul>
+              <li>Frequent checkpoints every N chunks</li>
+              <li>Automatic best model saving</li>
+              <li>Seamless training resume</li>
+              <li>Comprehensive state preservation</li>
+            </ul>
+          </div>
+          
+          <div class="feature-item">
+            <h3>🎯 Training Features</h3>
+            <ul>
+              <li>Early stopping with patience</li>
+              <li>Validation every N chunks</li>
+              <li>Learning rate scheduling</li>
+              <li>Comprehensive logging and progress tracking</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="technical-section">
+        <h2>Technical Details</h2>
+        
+        <div class="tech-grid">
+          <div class="tech-card">
+            <h3>Training Configuration</h3>
+            <div class="tech-specs">
+              <div class="spec-row">
+                <span class="spec-name">Effective Batch Size:</span>
+                <span class="spec-value">2048 (512 × 4 accum steps)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Learning Rate:</span>
+                <span class="spec-value">1e-4 (AdamW)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Chunks per Epoch:</span>
+                <span class="spec-value">50 (configurable)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Validation:</span>
+                <span class="spec-value">Every 50 chunks</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tech-card">
+            <h3>System Requirements</h3>
+            <div class="tech-specs">
+              <div class="spec-row">
+                <span class="spec-name">GPU:</span>
+                <span class="spec-value">10GB+ VRAM (CUDA)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">RAM:</span>
+                <span class="spec-value">16GB+ recommended</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Storage:</span>
+                <span class="spec-value">SSD for fast I/O</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Python:</span>
+                <span class="spec-value">3.8+ with PyTorch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ethics-section">
+        <h2>Ethics & Intended Use</h2>
+        <div class="ethics-content">
+          <p>This project is developed for <strong>educational and research purposes</strong> in the field of language modeling and sequence generation. It demonstrates advanced machine learning techniques for character-level modeling.</p>
+          
+          <div class="ethics-warning">
+            <h3>⚠️ Important Notice</h3>
+            <p>This tool is intended for:</p>
+            <ul>
+              <li>Academic research in machine learning</li>
+              <li>Cybersecurity education and training</li>
+              <li>Password strength analysis and testing</li>
+              <li>Understanding AI pattern recognition</li>
+            </ul>
+            <p><strong>Do not use this tool to:</strong></p>
+            <ul>
+              <li>Target systems without authorization</li>
+              <li>Access data without permission</li>
+              <li>Conduct unauthorized security testing</li>
+            </ul>
+            <p>Always ensure compliance with applicable laws and regulations.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="project-footer">
+      <div class="footer-content">
+        <p>&copy; 2024 Teijo Raiskio. Built with ❤️ for cybersecurity research and education.</p>
+        <div class="footer-links">
+          <a href="https://github.com/teyo1" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/teijoraiskio/" target="_blank">LinkedIn</a>
+          <a href="https://teyo1.github.io/verkkosivu/" target="_blank">Portfolio</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
