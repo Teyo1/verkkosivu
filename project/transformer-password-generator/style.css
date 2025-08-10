@@ -1,8 +1,8 @@
 /* Enhanced Typography & Color Scheme */
 :root {
-  --primary-color: #00d4ff;
+  --primary-color: #470057;
   --secondary-color: #ff6b6b;
-  --accent-color: #4ecdc4;
+  --accent-color: #8a2be2;
   --text-primary: #ffffff;
   --text-secondary: #b8c5d6;
   --text-muted: #8892b0;
@@ -63,7 +63,7 @@ a {
 }
 
 a:hover {
-  color: #33e5ff;
+  color: #8a2be2;
   text-decoration: underline;
   transform: translateY(-1px);
 }
@@ -458,7 +458,7 @@ section {
 }
 
 .footer-links a:hover {
-  color: #33e5ff;
+  color: #8a2be2;
   transform: translateY(-2px);
 }
 

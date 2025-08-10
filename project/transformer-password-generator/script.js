@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     codeBlocks.forEach(block => {
         block.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 8px 25px rgba(0, 212, 255, 0.2)';
+            this.style.boxShadow = '0 8px 25px rgba(71, 0, 87, 0.2)';
         });
         
         block.addEventListener('mouseleave', function() {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     techTags.forEach(tag => {
         tag.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.05) rotate(2deg)';
-            this.style.boxShadow = '0 0 20px rgba(0, 212, 255, 0.5)';
+            this.style.boxShadow = '0 0 20px rgba(71, 0, 87, 0.5)';
         });
         
         tag.addEventListener('mouseleave', function() {
